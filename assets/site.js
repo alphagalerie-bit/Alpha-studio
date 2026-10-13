@@ -16,6 +16,14 @@
     el.textContent = CFG[el.getAttribute("data-cfg")];
   });
 
+  /* Links de Instagram: <a data-ig="espaco|club"> */
+  document.querySelectorAll("[data-ig]").forEach(function (a) {
+    var h = CFG.INSTAGRAM && CFG.INSTAGRAM[a.getAttribute("data-ig")];
+    if (!h) return;
+    a.href = "https://www.instagram.com/" + h + "/";
+    a.textContent = "@" + h;
+  });
+
   function preco() { return OFERTA ? OFERTA[state.pay] : 0; }
   function sinal() { return Math.round(preco() * (OFERTA.sinal || 1)); }
 

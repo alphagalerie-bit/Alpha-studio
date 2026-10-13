@@ -10,6 +10,10 @@
     PRAZO: "30/10",                 /* fim da pré-venda */
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
+    /* Instagram (sem @). espaco: rodapé da página inicial e do esquenta.
+       club: rodapé e chamada do Clube Alpha. */
+    INSTAGRAM: { espaco: "alphastudio.space", club: "alpha.galerie" },
+
     /* Datas de show (página /esquenta).
        Marque disponivel:false quando a data for vendida. */
     SHOWS: [
