@@ -10,9 +10,13 @@
     PRAZO: "30/10",                 /* fim da pré-venda */
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
-    /* Instagram (sem @). espaco: rodapé da página inicial e do esquenta.
-       club: rodapé e chamada do Clube Alpha. */
-    INSTAGRAM: { espaco: "alphastudio.space", club: "alpha.galerie" },
+    /* Instagram (sem @). espaco: página inicial e esquenta. club: Clube Alpha.
+       dj: página do estúdio para DJs. */
+    INSTAGRAM: { espaco: "alphahousesp", club: "alphahousesp", dj: "alpha_space_sp" },
+
+    /* Pixel da Meta (só o número). Vazio = desligado. Com o número, mede visitas,
+       cliques em pagar, contatos no WhatsApp e compras aprovadas. */
+    META_PIXEL: "",
 
     /* Datas de show (página /esquenta).
        Marque disponivel:false quando a data for vendida. */
@@ -30,7 +34,14 @@
         id: "show", nome: "Esquenta do show", pagina: "/esquenta/",
         uso: "Até 12 pessoas · 4 horas · das 14h às 18h",
         pix: 2200, cartao: 2315, unidade: "/ reserva", sinal: 1,   /* pago integral e antecipado, como ingresso */
-        pessoas: 12                /* usado no "por pessoa" da página */
+        pessoas: 12,               /* usado no "por pessoa" da página */
+        nota: "Pagamento antecipado e integral, como um ingresso"
+      },
+      {
+        id: "dj", nome: "Pacote DJ 10 h", pagina: "/dj/",
+        uso: "10 horas de estúdio com telão de LED · blocos de 2 h",
+        pix: 1000, cartao: 1045, unidade: "/ 10 horas", sinal: 1,
+        nota: "10 horas para usar em até 90 dias · R$ 100 por hora"
       },
       {
         id: "club", nome: "Clube Alpha", pagina: "/club/",

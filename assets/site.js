@@ -24,6 +24,39 @@
     a.textContent = "@" + h;
   });
 
+  /* ====== PIXEL DA META (liga só com CFG.META_PIXEL) ====== */
+  function track(evento, dados) { if (window.fbq) window.fbq("track", evento, dados || {}); }
+  if (CFG.META_PIXEL) {
+    /* código oficial do Pixel, carregado só quando há um número no config */
+    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    window.fbq("init", CFG.META_PIXEL);
+    track("PageView");
+    if (OFERTA) track("ViewContent", { content_name: OFERTA.nome, value: OFERTA.pix, currency: "BRL" });
+  }
+
+  /* ====== WHATSAPP: botão flutuante e links prontos ====== */
+  function linkWpp(msg) { return "https://wa.me/" + WPP + "?text=" + encodeURIComponent(msg); }
+  /* <a data-wpp="mensagem"> vira link de WhatsApp com a mensagem pronta */
+  document.querySelectorAll("[data-wpp]").forEach(function (a) {
+    a.href = linkWpp(a.getAttribute("data-wpp"));
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  (function () {
+    var a = document.createElement("a");
+    a.className = "wa-float";
+    a.href = linkWpp("Olá! Vim pelo site da " + CFG.NOME + (OFERTA ? " e quero saber mais sobre " + OFERTA.nome : " e quero saber mais") + ".");
+    a.target = "_blank"; a.rel = "noopener";
+    a.setAttribute("aria-label", "Falar no WhatsApp");
+    a.innerHTML = '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.7C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.4-3.8-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.3 5.3 4.6 2 .8 2.7.9 3.7.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.7-.5z"/></svg>';
+    document.body.appendChild(a);
+  })();
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest('a[href^="https://wa.me/"]');
+    if (a) track("Contact");
+  });
+
   function preco() { return OFERTA ? OFERTA[state.pay] : 0; }
   function sinal() { return Math.round(preco() * (OFERTA.sinal || 1)); }
 
@@ -91,7 +124,7 @@
       else if (OFERTA.assinatura) sub = state.pay === "cartao"
         ? "R$ 100 por mês · renova sozinho a cada 3 meses"
         : "R$ 100 por mês · renovação pelo Pix a cada 3 meses";
-      else sub = "Pagamento antecipado e integral, como um ingresso";
+      else sub = OFERTA.nota || "";
       $("subTotal").textContent = sub;
     }
     if ($("fEmailLbl")) $("fEmailLbl").textContent =
@@ -169,6 +202,7 @@
     L.push("Pagamento: " + PAY_NOME[state.pay]);
     L.push("Valor: " + BRL(preco()) + (OFERTA.sinal < 1 ? " (sinal de " + BRL(sinal()) + ")" : ""));
     L.push("", "Pode confirmar e me mandar o Pix?");
+    track("Contact");
     window.open("https://wa.me/" + WPP + "?text=" + encodeURIComponent(L.join("\n")), "_blank");
   }
   if ($("send")) $("send").addEventListener("click", abrirWhatsApp);
@@ -181,6 +215,7 @@
       alert("Para a assinatura no cartão, o Mercado Pago pede seu e-mail."); return;
     }
     btn.disabled = true; btn.textContent = "Abrindo o Mercado Pago...";
+    track("InitiateCheckout", { content_name: OFERTA.nome, value: preco(), currency: "BRL" });
     fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -211,6 +246,7 @@
       falhou:     ["O pagamento não foi concluído.", "Você pode tentar de novo ou fechar com a gente pelo WhatsApp."]
     }[st];
     if (!txt) return;
+    if (st === "aprovado" || st === "assinatura") track("Purchase", { content_name: OFERTA.nome, value: OFERTA.pix, currency: "BRL" });
     var msg = "Olá! " + (st === "falhou" ? "Tive um problema ao pagar " : "Acabei de pagar ") + oque + " no site da " + CFG.NOME + ".";
     var bar = document.createElement("div");
     bar.className = "paid";
