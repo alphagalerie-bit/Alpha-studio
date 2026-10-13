@@ -4,10 +4,9 @@ Site da Alpha House: https://alphahousesp.alphagalerie.com
 
 | Página | O que vende |
 | --- | --- |
-| `/` | Entrada: esquenta, Clube Alpha, DJs e orçamento de eventos |
+| `/` | Entrada: esquenta, Clube Alpha e orçamento de eventos |
 | `/esquenta/` | Lugar privativo no dia de show (até 12 pessoas, 14h às 18h) |
 | `/club/` | Clube Alpha, plano trimestral |
-| `/dj/` | Pacote de 10 horas de estúdio com telão de LED |
 
 ## Onde mexer
 
