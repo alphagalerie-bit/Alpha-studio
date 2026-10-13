@@ -23,9 +23,20 @@
 <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="preload" as="image" href="img/esquenta-varanda.webp" fetchpriority="high">
 <link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EventVenue","name":"Alpha House",
+ "description":"Lugar privativo em Perdizes, São Paulo, com varanda, telão de LED e som: esquenta de show, Clube Alpha e eventos privados.",
+ "url":"https://alphastudio.alphagalerie.com/","image":"https://alphastudio.alphagalerie.com/img/og-esquenta.jpg",
+ "address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},
+ "areaServed":"Perdizes, São Paulo","priceRange":"R$ 100 – R$ 2.200",
+ "sameAs":["https://www.instagram.com/alphahousesp/"]}
+</script>
 </head>
 <body>
+
+<div class="strip" data-prazo>Pré-venda até <b data-cfg="PRAZO">30/10</b> · se o espaço não abrir, você recebe <b>100% de volta</b></div>
 
 <nav class="nav">
   <div class="wrap">
@@ -33,19 +44,56 @@
       <img class="mono-logo" src="assets/logo/alpha-house-simbolo-dourado.svg" alt="" width="42" height="42">
       <span class="brand-name">Alpha House<small>Perdizes · São Paulo</small></span>
     </a>
+    <a class="btn btn-gold nav-cta" href="#ofertas">Reservar</a>
   </div>
 </nav>
 
-<main class="band" style="border-top:0;padding-top:72px">
+<!-- ============ TOPO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true" style="background-image:url('img/esquenta-varanda.webp');background-position:center 55%"></div>
+  <div class="hero-glow" aria-hidden="true"><span></span><span></span></div>
+  <div class="wrap">
+    <p class="eyebrow">Alpha House · Perdizes, SP</p>
+    <h1>Você, seus amigos e <em>a melhor vista de Perdizes.</em></h1>
+    <p class="hero-sub">Um lugar privativo com varanda, telão de LED e som, só para você e seus convidados. Para o esquenta do show, para o happy hour ou para chamar de seu.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="#esquenta">Esquenta de show</a>
+      <a class="btn btn-ghost" href="#clube">Clube Alpha</a>
+    </div>
+    <div class="hero-foot">
+      <div class="item"><span class="k">Lugar</span><span class="v"><b>Privativo</b></span></div>
+      <div class="item"><span class="k">Convidados</span><span class="v">até <b>12</b> pessoas</span></div>
+      <div class="item"><span class="k">Onde</span><span class="v">Perdizes, SP</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ POR QUE ============ -->
+<section class="band">
   <div class="wrap">
     <div class="band-head">
-      <p class="eyebrow">Alpha House · Perdizes</p>
-      <h2 style="font-size:clamp(36px,6vw,64px)">Você, seus amigos e <em class="gold" style="font-style:italic">a melhor vista de Perdizes.</em></h2>
-      <p class="lead">Um lugar privativo para você e seus convidados. Escolha como quer viver o espaço.</p>
+      <p class="eyebrow reveal">Por que a Alpha House</p>
+      <h2 class="reveal">Um lugar que dá vontade de ficar.</h2>
     </div>
-    <article class="oferta">
+    <div class="perks">
+      <div class="perk reveal"><span class="tag">Varanda</span><h3>O pôr do sol é seu</h3><p>Mesas e cadeiras ao ar livre, com a cidade inteira na frente. A foto do dia sai daqui.</p></div>
+      <div class="perk reveal"><span class="tag">Telão</span><h3>Cinema na sala</h3><p>Telão de LED e som para o clipe, o show ou o jogo no tamanho que merecem.</p></div>
+      <div class="perk reveal"><span class="tag">Privacidade</span><h3>Só quem você chamou</h3><p>Nada de mesa dividida nem fila: o espaço é privativo, com banheiro só para o grupo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFERTAS ============ -->
+<main class="band" id="ofertas">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow reveal">Escolha como viver o espaço</p>
+      <h2 class="reveal">Um dia de show ou um lugar para chamar de seu.</h2>
+    </div>
+
+    <article class="oferta" id="esquenta">
       <a class="oferta-foto" href="esquenta/" aria-label="Esquenta do show">
-        <img src="img/esquenta-varanda.webp" alt="Lounge com telão de LED, sofá e varanda com mesas no fim de tarde" width="1448" height="1086" style="object-position:center 55%">
+        <img src="img/lounge-show.webp" alt="Telão de LED exibindo um show no lounge, com sofá e vitrine iluminada" width="1086" height="1448" style="object-position:center 40%" loading="lazy">
       </a>
       <div class="oferta-info">
         <div>
@@ -64,7 +112,7 @@
       </div>
     </article>
 
-    <article class="oferta">
+    <article class="oferta" id="clube">
       <a class="oferta-foto" href="club/" aria-label="Clube Alpha">
         <img src="img/lounge-led.webp" alt="Lounge com telão de LED, sofá e vitrine iluminada" width="1086" height="1448" style="object-position:center 58%" loading="lazy">
       </a>
@@ -85,7 +133,7 @@
       </div>
     </article>
 
-    <div class="eventos">
+    <div class="eventos reveal">
       <div>
         <h3>Aniversário ou confraternização de fim de ano?</h3>
         <p>A Alpha House recebe o seu evento privado para até 12 pessoas, com sofá, varanda, som e telão de LED. Conta a data que a gente monta a proposta.</p>
@@ -94,6 +142,18 @@
     </div>
   </div>
 </main>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="band ig-band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow reveal">Por dentro</p>
+      <h2 class="reveal">Veja a Alpha House acontecendo.</h2>
+      <p class="lead reveal">Fotos, vídeos e as próximas datas de show aparecem primeiro no nosso Instagram.</p>
+    </div>
+    <div class="hero-actions reveal"><a class="btn btn-ghost" data-ig-link="espaco" href="https://www.instagram.com/alphahousesp/" target="_blank" rel="noopener">Seguir no Instagram</a></div>
+  </div>
+</section>
 
 <section class="marcas" id="marcas" aria-labelledby="marcas-titulo"><!-- renderizado pelo config.js --></section>
 

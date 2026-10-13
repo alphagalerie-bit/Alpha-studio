@@ -3,7 +3,18 @@
 (function () {
   var CFG = window.ALPHA_CONFIG;
   var ROOT = new URL("..", document.currentScript.src).href;  /* raiz do site, de qualquer página */
-  var WPP = CFG.WPP, SHOWS = CFG.SHOWS;
+  var WPP = CFG.WPP;
+  /* Datas no formato ano-mês-dia, pelo relógio de quem visita */
+  var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+  var agora = new Date();
+  var HOJE = agora.getFullYear() + "-" + pad(agora.getMonth() + 1) + "-" + pad(agora.getDate());
+  function diasAte(iso) {
+    var p = iso.split("-"), alvo = new Date(+p[0], +p[1] - 1, +p[2]);
+    var base = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
+    return Math.round((alvo - base) / 864e5);
+  }
+  /* Shows saem do site na véspera (não dá para preparar o espaço no mesmo dia) */
+  var SHOWS = (CFG.SHOWS || []).filter(function (s) { return !s.data || s.data > HOJE; });
   var OFERTA = CFG.OFERTAS.find(function (o) { return o.id === document.body.getAttribute("data-oferta"); });
   var BRL = function (n) { return "R$ " + n.toLocaleString("pt-BR"); };
   var PAY_NOME = { pix: "Pix", cartao: "Cartão à vista" };
@@ -14,6 +25,19 @@
   /* Textos vindos do config: <span data-cfg="PRAZO"></span> */
   document.querySelectorAll("[data-cfg]").forEach(function (el) {
     el.textContent = CFG[el.getAttribute("data-cfg")];
+  });
+
+  /* Faixa de pré-venda (<div data-prazo>) some depois do PRAZO ("dd/mm") */
+  if (CFG.PRAZO) {
+    var pz = CFG.PRAZO.split("/");
+    if (agora.getFullYear() + "-" + pad(+pz[1]) + "-" + pad(+pz[0]) < HOJE)
+      document.querySelectorAll("[data-prazo]").forEach(function (el) { el.style.display = "none"; });
+  }
+
+  /* Botões que só levam ao Instagram: <a data-ig-link="espaco"> (mantém o texto do botão) */
+  document.querySelectorAll("[data-ig-link]").forEach(function (a) {
+    var h = CFG.INSTAGRAM && CFG.INSTAGRAM[a.getAttribute("data-ig-link")];
+    if (h) { a.href = "https://www.instagram.com/" + h + "/"; a.target = "_blank"; a.rel = "noopener"; }
   });
 
   /* Links de Instagram: <a data-ig="espaco|club"> */
@@ -62,12 +86,18 @@
 
   /* ====== SHOWS ====== */
   var grid = $("showGrid"), optShows = $("optShows");
+  if (grid && !SHOWS.length) {
+    grid.innerHTML = '<div class="show"><span class="date">Novas datas</span><h3>Em breve</h3>' +
+      '<p class="meta">Os próximos shows abrem aqui primeiro. Peça para ser avisado logo abaixo.</p></div>';
+  }
   if (grid || optShows) SHOWS.forEach(function (s) {
     if (grid) {
       var c = document.createElement("div");
+      var faltam = s.data ? diasAte(s.data) : null;
       c.className = "show reveal" + (s.disponivel ? "" : " out");
       c.innerHTML =
         '<span class="date">' + s.dia + '</span>' +
+        (faltam && s.disponivel ? '<span class="falta">' + (faltam === 1 ? "É amanhã" : "Faltam " + faltam + " dias") + '</span>' : '') +
         '<h3>' + s.artista + '</h3>' +
         '<p class="meta"><b style="color:var(--ink);font-weight:500">Esquenta das ' + s.horario +'</b></p>' +
         '<span class="status">' + (s.disponivel ? "Disponível · 1 reserva" : "Reservado") + '</span>' +
@@ -126,6 +156,11 @@
         : "R$ 100 por mês · renovação pelo Pix a cada 3 meses";
       else sub = OFERTA.nota || "";
       $("subTotal").textContent = sub;
+    }
+    var ctaTxt = document.querySelector(".cta-bar .cta-txt");
+    if (ctaTxt) {  /* o primeiro valor em R$ fica em destaque */
+      ctaTxt.textContent = OFERTA.barra.replace("{preco}", BRL(preco()));
+      ctaTxt.innerHTML = ctaTxt.innerHTML.replace(/(R\$\s?[\d.]+(,\d+)?)/, "<b>$1</b>");
     }
     if ($("fEmailLbl")) $("fEmailLbl").textContent =
       (OFERTA.assinatura && state.pay === "cartao") ? "Seu e-mail (para a assinatura)" : "Seu e-mail";
@@ -278,6 +313,21 @@
       ans.style.maxHeight = open ? null : (ans.scrollHeight + "px");
     });
   });
+
+  /* ====== BARRA FIXA NO CELULAR: preço + botão, depois que o topo da página sai da tela ====== */
+  var heroEl = document.querySelector(".hero");
+  if (OFERTA && OFERTA.barra && modal && heroEl && "IntersectionObserver" in window) {
+    var cta = document.createElement("div");
+    cta.className = "cta-bar";
+    cta.innerHTML = '<span class="cta-txt"></span><button type="button" class="btn btn-gold" data-reserve>' + (OFERTA.botao || "Reservar") + '</button>';
+    document.body.appendChild(cta);
+    document.body.classList.add("has-cta");
+    new IntersectionObserver(function (es) {
+      var mostrar = !es[0].isIntersecting;
+      cta.classList.toggle("on", mostrar);
+      document.body.classList.toggle("cta-on", mostrar);
+    }).observe(heroEl);
+  }
 
   refresh();
 

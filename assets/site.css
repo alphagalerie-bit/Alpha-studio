@@ -432,3 +432,30 @@ footer .f-legal{flex-basis:100%;font-size:12.5px;color:var(--muted);margin-top:1
 
 .mono-logo{width:48px;height:48px;flex-shrink:0;margin:0 -4px;}
 @media(max-width:560px){ .mono-logo{width:42px;height:42px;} }
+
+/* ---------- Contagem regressiva no card do show ---------- */
+.show .falta{align-self:flex-start;font-size:12px;letter-spacing:.06em;color:#1a1407;background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+  padding:5px 10px;border-radius:2px;font-weight:600;}
+
+/* ---------- Barra fixa no celular (preço + botão) ---------- */
+.cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:85;display:none;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(15,15,19,.96);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .3s ease;}
+.cta-bar .cta-txt{font-size:14px;color:var(--ink);line-height:1.35;}
+.cta-bar .cta-txt b{font-family:"Fraunces",serif;font-weight:500;font-size:18px;color:var(--gold-bright);}
+.cta-bar .btn{padding:14px 22px;font-size:14px;flex-shrink:0;}
+@media(max-width:760px){
+  .cta-bar{display:flex;}
+  .cta-bar.on{transform:none;}
+  body.has-cta footer{padding-bottom:110px;}
+  body.cta-on .wa-float{bottom:84px;}
+}
+.wa-float{transition:transform .2s ease,bottom .3s ease;}
+
+/* ---------- Faixa do Instagram ---------- */
+.ig-band{text-align:center;}
+.ig-band .band-head{margin:0 auto;}
+.ig-band .eyebrow{justify-content:center;}
+.ig-band .lead{margin-left:auto;margin-right:auto;}
+.ig-band .hero-actions{justify-content:center;}
