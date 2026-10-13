@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Esquenta de show no Allianz Parque — Alpha Studio Space</title>
-<meta name="description" content="Lounge privativo em Perdizes, de frente para o Allianz Parque (Nubank Parque), para o esquenta do show com até 12 amigos. Das 14h às 18h, com painel de LED, som e varanda. Reserve pelo Mercado Pago." />
+<meta name="description" content="Lounge privativo em Perdizes, de frente para o Allianz Parque (Nubank Parque), para o esquenta do show com até 12 amigos. Das 14h às 18h, com sofá, varanda, som e telão de LED. Reserve pelo Mercado Pago." />
 <!-- Preços, datas e horários: arquivo /config.js -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,49 +27,84 @@
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
-  <div class="hero-bg" aria-hidden="true" style="background-image:url('../img/lounge-varanda.webp')"></div>
+  <div class="hero-bg" aria-hidden="true" style="background-image:url('../img/esquenta-varanda.webp');background-position:center 55%"></div>
   <div class="hero-glow" aria-hidden="true"><span></span><span></span></div>
   <div class="wrap">
     <p class="eyebrow">Dia de show · <span data-cfg="ESTADIO">Allianz Parque</span></p>
-    <h1>O esquenta do show <em>com a sua turma.</em></h1>
-    <p class="hero-sub">Um lounge só para o seu grupo em Perdizes, de frente para o <span data-cfg="ESTADIO">Allianz Parque</span>. Painel de LED, som e varanda das 14h às 18h. Às 18h, todo mundo sai pronto para o show.</p>
+    <h1>O esquenta do show num lounge <em>só da sua turma.</em></h1>
+    <p class="hero-sub">Das 14h às 18h, até 12 amigos, num lounge privativo em Perdizes, de frente para o <span data-cfg="ESTADIO">Allianz Parque</span>. Sofá, varanda, som e telão de LED. Sem calçada, sem fila de bar, sem turma espalhada.</p>
     <div class="hero-actions">
-      <a class="btn btn-gold" href="#shows">Ver as datas</a>
+      <a class="btn btn-gold" href="#datas">Ver datas e reservar</a>
       <a class="btn btn-ghost" href="#preco">Quanto custa</a>
     </div>
     <div class="hero-foot">
-      <div class="item"><span class="k">Grupo</span><span class="v">até <b>12</b> pessoas</span></div>
+      <div class="item"><span class="k">Turma</span><span class="v">até <b>12</b> pessoas</span></div>
       <div class="item"><span class="k">Horário</span><span class="v"><b>14h</b> às <b>18h</b></span></div>
-      <div class="item"><span class="k">Reserva</span><span class="v"><b>1</b> grupo por show</span></div>
+      <div class="item"><span class="k">Por pessoa</span><span class="v"><b data-pessoa>R$ 184</b></span></div>
     </div>
   </div>
 </header>
 
-<!-- ============ SHOWS ============ -->
-<section class="band" id="shows">
-  <div class="wrap">
-    <div class="band-head">
-      <p class="eyebrow reveal">Próximos shows</p>
-      <h2 class="reveal">Uma reserva por show. O espaço inteiro é do seu grupo.</h2>
-      <p class="lead reveal">Escolha a data, pague o sinal de 50% e a tarde é sua: 4 horas de esquenta para até 12 pessoas.</p>
-    </div>
-    <div class="show-grid" id="showGrid"><!-- renderizado pelo config.js --></div>
-    <p class="show-note reveal">Show em outra data no <span data-cfg="ESTADIO">Allianz Parque</span>? Chama a gente no <a class="gold" href="#" data-reserve>formulário</a> ou no WhatsApp. Não inclui ingresso. Evento independente, sem vínculo com artistas, produtoras ou o estádio.</p>
-  </div>
-</section>
-
-<!-- ============ COMO É ============ -->
+<!-- ============ DOR ============ -->
 <section class="band">
   <div class="wrap">
     <div class="band-head">
-      <p class="eyebrow reveal">Como é a tarde</p>
-      <h2 class="reveal">Você reserva o lugar. A turma só aparece.</h2>
+      <p class="eyebrow reveal">Dia de show, do jeito de sempre</p>
+      <h2 class="reveal">Você conhece esse roteiro.</h2>
+    </div>
+    <ul class="dores reveal">
+      <li>Chegar cedo e passar horas em pé na calçada do estádio.</li>
+      <li>Bar do entorno lotado: sem mesa, fila para pedir, fila para o banheiro.</li>
+      <li>Metade da turma chega, metade se perde, e o celular não ajuda.</li>
+      <li>Sol ou chuva na cabeça até a hora de entrar.</li>
+      <li>Nenhum lugar para juntar todo mundo e entrar no clima junto.</li>
+      <li>Fotos do dia tiradas no meio da muvuca.</li>
+    </ul>
+    <p class="virada reveal">O show começa à noite. A experiência pode começar às 14h, do jeito certo.</p>
+  </div>
+</section>
+
+<!-- ============ EXPERIÊNCIA ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow reveal">A sua tarde</p>
+      <h2 class="reveal">Um lugar só de vocês até a hora do show.</h2>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="n">14h</div><h3>Chegada</h3><p>O grupo entra pela portaria com nome na lista. O lounge já está pronto.</p></div>
-      <div class="step reveal"><div class="n">15h</div><h3>Esquenta</h3><p>Playlist do artista no som, clipes no painel de LED e a varanda para as fotos.</p></div>
-      <div class="step reveal"><div class="n">17h</div><h3>Ritmo de show</h3><p>Últimas fotos, último brinde, todo mundo pronto e no clima.</p></div>
-      <div class="step reveal"><div class="n">18h</div><h3>Rumo ao show</h3><p>Fim da reserva, a tempo de pegar a fila com calma.</p></div>
+      <div class="step reveal"><div class="n">14h</div><h3>Todo mundo junto</h3><p>A turma chega pela portaria, com nome na lista. Ninguém fica perdido na rua.</p></div>
+      <div class="step reveal"><div class="n">15h</div><h3>O esquenta de verdade</h3><p>Playlist do artista no som, clipes no telão, sofá para sentar e varanda para as fotos.</p></div>
+      <div class="step reveal"><div class="n">17h</div><h3>Clima de show</h3><p>Último brinde, últimas fotos, todo mundo pronto e no mesmo ritmo.</p></div>
+      <div class="step reveal"><div class="n">18h</div><h3>Rumo ao show</h3><p>Fim da reserva, com tempo de sobra para a fila do portão.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O QUE VOCÊS TÊM ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow reveal">O que vocês têm</p>
+      <h2 class="reveal">Tudo o que a calçada não tem.</h2>
+    </div>
+    <div class="inc-cols">
+      <div class="reveal">
+        <h3>Inclui</h3>
+        <ul class="inc-list">
+          <li>Lounge privativo<span>Só a sua turma, das 14h às 18h.</span></li>
+          <li>Varanda com mesas e cadeiras<span>Ar livre, vista aberta e as melhores fotos do dia.</span></li>
+          <li>Sofá e lugar para todo mundo<span>Ninguém passa a tarde em pé.</span></li>
+          <li>Telão de LED e som<span>Clipes e playlist do artista para entrar no clima.</span></li>
+          <li>Banheiro exclusivo<span>Sem fila, só para o grupo.</span></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <h3 class="no">Não inclui</h3>
+        <ul class="inc-list">
+          <li>Ingresso do show<span>Cada um compra o seu. A reserva é do espaço.</span></li>
+          <li>Comida e bebida<span>Consumo à parte. Dá para pedir iFood pela portaria.</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -78,14 +113,27 @@
 <section class="band" id="espaco">
   <div class="wrap">
     <div class="band-head">
-      <p class="eyebrow reveal">O espaço</p>
-      <h2 class="reveal">Painel de LED, lounge e varanda.</h2>
+      <p class="eyebrow reveal">O lugar</p>
+      <h2 class="reveal">Onde a sua turma vai estar.</h2>
     </div>
     <div class="gal">
-      <figure class="reveal"><img src="../img/vista-estadio.webp" alt="Lounge com painel de LED e varanda com vista" loading="lazy" width="941" height="1672"><figcaption>A varanda, no fim de tarde.</figcaption></figure>
-      <figure class="reveal"><img src="../img/lounge-show.webp" alt="Painel de LED exibindo um show no lounge" loading="lazy" width="1086" height="1448"><figcaption>O show no painel de LED, antes do show.</figcaption></figure>
-      <figure class="reveal"><img src="../img/evento-dj.webp" alt="Grupo reunido no lounge com DJ e painel de LED" loading="lazy" width="1086" height="1448"><figcaption>Lounge cheio, do jeito certo.</figcaption></figure>
+      <figure class="reveal"><img src="../img/esquenta-varanda.webp" alt="Lounge com telão de LED, sofá e varanda com mesas no fim de tarde" loading="lazy" width="1448" height="1086"><figcaption>A varanda, no fim de tarde.</figcaption></figure>
+      <figure class="reveal"><img src="../img/lounge-show.webp" alt="Telão de LED exibindo um show no lounge" loading="lazy" width="1086" height="1448"><figcaption>O show no telão, antes do show.</figcaption></figure>
+      <figure class="reveal"><img src="../img/evento-dj.webp" alt="Turma reunida no lounge com telão de LED" loading="lazy" width="1086" height="1448"><figcaption>Lounge cheio, do jeito certo.</figcaption></figure>
     </div>
+  </div>
+</section>
+
+<!-- ============ DATAS ============ -->
+<section class="band" id="datas">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow reveal">Escolha o seu show</p>
+      <h2 class="reveal">Uma turma por show. Quem reservar primeiro leva.</h2>
+      <p class="lead reveal">O lounge recebe um único grupo em cada data. Garanta a sua com o sinal de 50%.</p>
+    </div>
+    <div class="show-grid" id="showGrid"><!-- renderizado pelo config.js --></div>
+    <p class="show-note reveal">Vai a outro show no <span data-cfg="ESTADIO">Allianz Parque</span>? Chama a gente no <a class="gold" href="#" data-reserve>formulário</a> que a gente abre a data. Não inclui ingresso. Evento independente, sem vínculo com artistas, produtoras ou o estádio.</p>
   </div>
 </section>
 
@@ -94,7 +142,7 @@
   <div class="wrap">
     <div class="band-head">
       <p class="eyebrow reveal">Quanto custa</p>
-      <h2 class="reveal">Um preço para o grupo inteiro.</h2>
+      <h2 class="reveal">Um preço para a turma inteira.</h2>
     </div>
     <div class="pay-toggle reveal" role="group" aria-label="Forma de pagamento">
       <button type="button" class="on" data-pay="pix" aria-pressed="true">Pix</button>
@@ -102,55 +150,34 @@
     </div>
     <div class="pac-grid" style="grid-template-columns:minmax(0,560px)">
       <div class="pac feat reveal">
-        <span class="flag">1 grupo por show</span>
+        <span class="flag">1 turma por show</span>
         <h3>Esquenta do show</h3>
         <p class="use">Até 12 pessoas · 4 horas · das 14h às 18h</p>
         <div class="price"><span data-price>R$ 2.200</span> <small>/ reserva</small></div>
-        <div class="dur">Com 12 pessoas, sai menos de R$ 200 por pessoa · sinal de <span data-sinal>R$ 1.100</span> garante a data</div>
+        <p class="pp">Dividido por 12, dá <b data-pessoa>R$ 184</b> por pessoa.</p>
+        <div class="dur">Sinal de <span data-sinal>R$ 1.100</span> garante a data · saldo até 7 dias antes</div>
         <ul>
-          <li><span class="ck">+</span>Lounge e varanda só para o seu grupo</li>
-          <li><span class="ck">+</span>Painel de LED e som para o esquenta</li>
+          <li><span class="ck">+</span>Lounge, varanda e sofá só para a sua turma</li>
+          <li><span class="ck">+</span>Telão de LED e som para o esquenta</li>
           <li><span class="ck">+</span>Banheiro exclusivo do grupo</li>
-          <li><span class="ck">+</span>Saldo até 7 dias antes do show</li>
           <li><span class="ck">+</span>Reembolso integral se o show for cancelado</li>
         </ul>
-        <button class="btn btn-gold" data-reserve>Reservar minha data</button>
-      </div>
-    </div>
-    <div class="inc-cols">
-      <div class="reveal">
-        <h3 class="no">Não inclui</h3>
-        <ul class="inc-list">
-          <li>Ingresso do show<span>Cada um compra o seu. A reserva é do espaço.</span></li>
-          <li>Comida e bebida<span>Consumo à parte. Pode pedir iFood pela portaria.</span></li>
-        </ul>
+        <button class="btn btn-gold" data-reserve>Garantir a data da minha turma</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ GARANTIA + REGRAS ============ -->
+<!-- ============ GARANTIA ============ -->
 <section class="band">
   <div class="wrap">
     <div class="guarantee reveal" style="margin-top:0">
       <span class="g-ic" aria-hidden="true">✓</span>
       <div>
-        <h3>Reembolso integral</h3>
-        <p>Se o espaço não abrir ou se o show for cancelado, você recebe 100% do valor pago. Remarcação para outro show até 7 dias antes, se houver data livre.</p>
+        <h3>Risco zero para a sua turma</h3>
+        <p>Se o espaço não abrir ou se o show for cancelado, você recebe 100% do valor pago. Precisa trocar de show? Remarcamos até 7 dias antes, se houver data livre.</p>
       </div>
     </div>
-    <div class="band-head" style="margin-top:72px">
-      <p class="eyebrow reveal">Regras da casa</p>
-      <h2 class="reveal">Para o prédio continuar recebendo a gente.</h2>
-    </div>
-    <ul class="rules reveal">
-      <li>Até 12 pessoas e horário combinado cumprido.</li>
-      <li>Som no volume que o condomínio permite.</li>
-      <li>Fumo só onde o condomínio permitir.</li>
-      <li>O grupo responde por danos ao espaço e aos móveis.</li>
-      <li>Limpeza rápida ao final. Sujeira excessiva gera taxa.</li>
-      <li>Convidados e entregas pela portaria, com nome na lista.</li>
-    </ul>
   </div>
 </section>
 
@@ -162,12 +189,13 @@
       <h2 class="reveal">Antes de você perguntar.</h2>
     </div>
     <div class="faq">
-      <div class="qa"><button>A reserva inclui o ingresso do show?<span class="sign">+</span></button><div class="ans"><p>Não. A reserva é do espaço para o esquenta. Cada pessoa compra o próprio ingresso.</p></div></div>
-      <div class="qa"><button>Por que das 14h às 18h?<span class="sign">+</span></button><div class="ans"><p>São 4 horas para o grupo chegar com calma, curtir e sair a tempo de pegar a fila e entrar no show.</p></div></div>
-      <div class="qa"><button>Quantas pessoas cabem?<span class="sign">+</span></button><div class="ans"><p>Até 12 pessoas, contando com você. O preço é o mesmo para o grupo inteiro.</p></div></div>
-      <div class="qa"><button>Como funciona o pagamento?<span class="sign">+</span></button><div class="ans"><p>Pelo Mercado Pago, no Pix ou no cartão à vista. Você paga 50% de sinal para garantir a data e o saldo até 7 dias antes. O preço no cartão é um pouco maior por causa da taxa.</p></div></div>
+      <div class="qa"><button>Dá para dividir o valor com a turma?<span class="sign">+</span></button><div class="ans"><p>Dá. Você paga a reserva no Mercado Pago e divide com a galera como preferir. Com 12 pessoas, sai <span data-pessoa>R$ 184</span> por pessoa.</p></div></div>
+      <div class="qa"><button>E se a turma tiver menos de 12 pessoas?<span class="sign">+</span></button><div class="ans"><p>O preço é o mesmo e o espaço continua só de vocês. Mais espaço no sofá.</p></div></div>
+      <div class="qa"><button>A reserva inclui o ingresso do show?<span class="sign">+</span></button><div class="ans"><p>Não. A reserva é do lounge para o esquenta. Cada pessoa compra o próprio ingresso.</p></div></div>
       <div class="qa"><button>E se o show for cancelado?<span class="sign">+</span></button><div class="ans"><p>Você recebe 100% do valor pago de volta. O mesmo vale se o espaço não abrir.</p></div></div>
+      <div class="qa"><button>Por que das 14h às 18h?<span class="sign">+</span></button><div class="ans"><p>São 4 horas para a turma chegar com calma, curtir junto e sair a tempo de pegar a fila do portão.</p></div></div>
       <div class="qa"><button>Posso levar comida e bebida?<span class="sign">+</span></button><div class="ans"><p>Comida e bebida são à parte. Dá para pedir iFood e receber pela portaria. As regras de bebida a gente confirma no WhatsApp antes do dia.</p></div></div>
+      <div class="qa"><button>Tem alguma regra?<span class="sign">+</span></button><div class="ans"><p>Poucas: até 12 pessoas, horário combinado, som no volume que o condomínio permite, fumo só onde for permitido e convidados com nome na lista da portaria. O grupo responde por danos ao espaço.</p></div></div>
       <div class="qa"><button>Vocês têm ligação com o estádio ou com os artistas?<span class="sign">+</span></button><div class="ans"><p>Não. O Alpha Studio Space é um espaço independente, sem vínculo com artistas, produtoras ou o estádio.</p></div></div>
       <div class="qa"><button>Onde fica?<span class="sign">+</span></button><div class="ans"><p>Em Perdizes, São Paulo, de frente para o <span data-cfg="ESTADIO">Allianz Parque</span>. O endereço completo vai por mensagem depois do pagamento.</p></div></div>
     </div>
@@ -176,11 +204,13 @@
 
 <section class="final">
   <div class="wrap">
-    <h2>Só um grupo por show. Garanta o seu.</h2>
-    <p class="lead">Sinal de 50% no Mercado Pago e reembolso integral se o show for cancelado.</p>
-    <button class="btn btn-gold" data-reserve>Reservar minha data</button>
+    <h2>Só uma turma por show. Que seja a sua.</h2>
+    <p class="lead">Lounge só de vocês das 14h às 18h, sinal de 50% no Mercado Pago e reembolso integral se o show for cancelado.</p>
+    <button class="btn btn-gold" data-reserve>Garantir a data da minha turma</button>
   </div>
 </section>
+
+<section class="marcas" id="marcas" aria-labelledby="marcas-titulo"><!-- renderizado pelo config.js --></section>
 
 <footer>
   <div class="wrap">

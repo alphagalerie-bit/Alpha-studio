@@ -395,3 +395,26 @@ footer .f-legal{flex-basis:100%;font-size:12.5px;color:var(--muted);margin-top:1
 .price-hero small{font-family:"Space Grotesk",sans-serif;font-size:15px;color:var(--muted);margin-left:8px;}
 .back{font-size:13px;color:var(--muted);letter-spacing:.06em;}
 .back:hover{color:var(--gold-bright);}
+
+/* ---------- Dor ---------- */
+.dores{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0 40px;max-width:940px;}
+.dores li{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--line-soft);font-size:16.5px;color:var(--ink);}
+.dores li::before{content:"✕";color:#C9786F;font-weight:600;flex-shrink:0;line-height:1.6;}
+.virada{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(21px,2.6vw,27px);line-height:1.4;color:var(--gold-bright);
+  border-left:2px solid var(--gold);padding-left:22px;margin-top:40px;max-width:40ch;}
+@media(max-width:760px){ .dores{grid-template-columns:1fr;} }
+.pp{font-size:14.5px;color:var(--ink);margin-top:10px;}
+.pp b{color:var(--gold-bright);font-weight:600;}
+
+/* ---------- Patrocínio ---------- */
+.marcas{border-top:1px solid var(--line-soft);background:var(--bg-2);padding:56px 0 60px;text-align:center;}
+.marcas .eyebrow{justify-content:center;}
+.marcas h2{font-size:clamp(24px,3vw,34px);}
+.marcas h2 em{color:var(--gold-bright);}
+.marcas-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px 56px;margin-top:34px;}
+.marca{position:relative;display:flex;align-items:center;}
+.marca img{height:58px;width:auto;max-width:190px;object-fit:contain;opacity:.88;transition:opacity .25s;}
+.marca img:hover{opacity:1;}
+.marca-txt{font-family:"Fraunces",serif;font-size:27px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);opacity:.88;line-height:58px;}
+.marca-selo{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:4px;white-space:nowrap;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+@media(max-width:640px){ .marcas-row{gap:22px 34px;} .marca img{height:44px;max-width:145px;} .marca-txt{font-size:21px;line-height:44px;} }

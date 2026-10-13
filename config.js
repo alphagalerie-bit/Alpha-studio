@@ -24,7 +24,8 @@
       {
         id: "show", nome: "Esquenta do show", pagina: "/esquenta/",
         uso: "Até 12 pessoas · 4 horas · das 14h às 18h",
-        pix: 2200, cartao: 2315, unidade: "/ reserva", sinal: 0.5
+        pix: 2200, cartao: 2315, unidade: "/ reserva", sinal: 0.5,
+        pessoas: 12                /* usado no "por pessoa" da página */
       },
       {
         id: "club", nome: "Clube Alpha", pagina: "/club/",
@@ -32,6 +33,16 @@
         pix: 300, cartao: 316, unidade: "/ trimestre", sinal: 1,
         assinatura: { meses: 3 }   /* no cartão vira assinatura com renovação automática */
       }
+    ],
+
+    /* Patrocínio (faixa no fim das páginas). Para pôr o logo, solte o PNG
+       com fundo transparente em img/marcas/ e preencha "logo".
+       Sem logo, aparece o nome escrito. */
+    MARCAS: [
+      { nome: "Aleda", logo: "img/marcas/aleda.png" },
+      { nome: "Bombaco", logo: "img/marcas/bombaco.png" },
+      { nome: "Squadafum", logo: "" },
+      { nome: "Nowdays", logo: "", selo: "Parceiro oficial" }
     ]
   };
 

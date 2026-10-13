@@ -2,6 +2,7 @@
    WhatsApp, FAQ e animações. A página diz qual oferta vende em <body data-oferta="...">. */
 (function () {
   var CFG = window.ALPHA_CONFIG;
+  var ROOT = new URL("..", document.currentScript.src).href;  /* raiz do site, de qualquer página */
   var WPP = CFG.WPP, SHOWS = CFG.SHOWS;
   var OFERTA = CFG.OFERTAS.find(function (o) { return o.id === document.body.getAttribute("data-oferta"); });
   var BRL = function (n) { return "R$ " + n.toLocaleString("pt-BR"); };
@@ -65,6 +66,9 @@
     if (!OFERTA) return;
     document.querySelectorAll("[data-price]").forEach(function (el) { el.textContent = BRL(preco()); });
     document.querySelectorAll("[data-sinal]").forEach(function (el) { el.textContent = BRL(sinal()); });
+    if (OFERTA.pessoas) document.querySelectorAll("[data-pessoa]").forEach(function (el) {
+      el.textContent = BRL(Math.ceil(preco() / OFERTA.pessoas));
+    });
     document.querySelectorAll("[data-pay]").forEach(function (b) {
       var on = b.getAttribute("data-pay") === state.pay;
       b.classList.toggle("on", on);
@@ -206,6 +210,21 @@
     document.body.insertBefore(bar, document.body.firstChild);
     history.replaceState(null, "", location.pathname);
   })();
+
+  /* ====== PATROCÍNIO ====== */
+  var marcas = $("marcas");
+  if (marcas && CFG.MARCAS && CFG.MARCAS.length) {
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+    marcas.innerHTML =
+      '<div class="wrap"><p class="eyebrow">Patrocínio</p>' +
+      '<h2 id="marcas-titulo">As marcas que estão <em>com a gente</em>.</h2>' +
+      '<div class="marcas-row">' + CFG.MARCAS.map(function (m) {
+        var peca = m.logo
+          ? '<img src="' + esc(ROOT + m.logo) + '" alt="' + esc(m.nome) + '" loading="lazy" decoding="async">'
+          : '<span class="marca-txt">' + esc(m.nome) + '</span>';
+        return '<div class="marca">' + peca + (m.selo ? '<span class="marca-selo">' + esc(m.selo) + '</span>' : '') + '</div>';
+      }).join("") + '</div></div>';
+  }
 
   /* ====== FAQ ====== */
   document.querySelectorAll(".qa").forEach(function (qa) {
