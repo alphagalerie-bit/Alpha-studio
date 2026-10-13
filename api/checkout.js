@@ -56,7 +56,7 @@ module.exports = async function handler(req, res) {
   const quando = limpa(b.data, 120);
   if (!nome) return res.status(400).json({ erro: "nome obrigatório" });
 
-  let titulo = "Alpha Studio Space · " + oferta.nome;
+  let titulo = CONFIG.NOME + " · " + oferta.nome;
   let show = null;
   if (oferta.id === "show") {
     show = CONFIG.SHOWS.find(s => s.id === b.show);
@@ -81,7 +81,7 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ erro: "e-mail obrigatório para a assinatura" });
       }
       const sub = await mp("/preapproval", {
-        reason: "Alpha Studio Space · " + oferta.nome + " (trimestral)",
+        reason: CONFIG.NOME + " · " + oferta.nome + " (trimestral)",
         external_reference: ref,
         payer_email: email,
         back_url: volta.replace("{st}", "assinatura"),
@@ -109,7 +109,7 @@ module.exports = async function handler(req, res) {
       payer: Object.assign({ name: nome }, email ? { email } : {}),
       external_reference: ref,
       metadata,
-      statement_descriptor: "ALPHASTUDIO",
+      statement_descriptor: "ALPHAHOUSE",
       back_urls: {
         success: volta.replace("{st}", "aprovado"),
         pending: volta.replace("{st}", "pendente"),

@@ -5,6 +5,7 @@
    ============================================================ */
 (function (root) {
   var CONFIG = {
+    NOME: "Alpha House",            /* nome do espaço: aparece no Mercado Pago e no WhatsApp */
     WPP: "5511926441522",           /* WhatsApp da captação */
     PRAZO: "30/10",                 /* fim da pré-venda */
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
@@ -24,7 +25,7 @@
       {
         id: "show", nome: "Esquenta do show", pagina: "/esquenta/",
         uso: "Até 12 pessoas · 4 horas · das 14h às 18h",
-        pix: 2200, cartao: 2315, unidade: "/ reserva", sinal: 0.5,
+        pix: 2200, cartao: 2315, unidade: "/ reserva", sinal: 1,   /* pago integral e antecipado, como ingresso */
         pessoas: 12                /* usado no "por pessoa" da página */
       },
       {
@@ -37,12 +38,12 @@
 
     /* Patrocínio (faixa no fim das páginas). Para pôr o logo, solte o PNG
        com fundo transparente em img/marcas/ e preencha "logo".
-       Sem logo, aparece o nome escrito. */
+       Marca sem logo oficial não aparece. */
     MARCAS: [
       { nome: "Aleda", logo: "img/marcas/aleda.png" },
       { nome: "Bombaco", logo: "img/marcas/bombaco.png" },
       { nome: "Squadafum", logo: "" },
-      { nome: "Nowdays", logo: "", selo: "Parceiro oficial" }
+      { nome: "Nowdays", logo: "" }
     ]
   };
 

@@ -83,6 +83,7 @@
       else if (OFERTA.assinatura) sub = state.pay === "cartao"
         ? "R$ 100 por mês · renova sozinho a cada 3 meses"
         : "R$ 100 por mês · renovação pelo Pix a cada 3 meses";
+      else sub = "Pagamento antecipado e integral, como um ingresso";
       $("subTotal").textContent = sub;
     }
     if ($("fEmailLbl")) $("fEmailLbl").textContent =
@@ -148,7 +149,7 @@
   function abrirWhatsApp() {
     var f = campos();
     if (!valida(f)) return;
-    var L = ["Olá! Quero garantir *" + OFERTA.nome + "* no Alpha Studio Space.", ""];
+    var L = ["Olá! Quero garantir *" + OFERTA.nome + "* na " + CFG.NOME + ".", ""];
     if (OFERTA.id === "show") {
       var s = showAtual();
       L.push("Show: " + s.artista + " (" + s.dia + ", " + s.horario + ")");
@@ -202,7 +203,7 @@
       falhou:     ["O pagamento não foi concluído.", "Você pode tentar de novo ou fechar com a gente pelo WhatsApp."]
     }[st];
     if (!txt) return;
-    var msg = "Olá! " + (st === "falhou" ? "Tive um problema ao pagar " : "Acabei de pagar ") + oque + " no site do Alpha Studio Space.";
+    var msg = "Olá! " + (st === "falhou" ? "Tive um problema ao pagar " : "Acabei de pagar ") + oque + " no site da " + CFG.NOME + ".";
     var bar = document.createElement("div");
     bar.className = "paid";
     bar.innerHTML = '<div class="wrap"><div><b>' + txt[0] + '</b> ' + txt[1] + '</div>' +
@@ -213,16 +214,14 @@
 
   /* ====== PATROCÍNIO ====== */
   var marcas = $("marcas");
-  if (marcas && CFG.MARCAS && CFG.MARCAS.length) {
+  var comLogo = (CFG.MARCAS || []).filter(function (m) { return m.logo; });  /* só logo oficial */
+  if (marcas && comLogo.length) {
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
     marcas.innerHTML =
       '<div class="wrap"><p class="eyebrow">Patrocínio</p>' +
       '<h2 id="marcas-titulo">As marcas que estão <em>com a gente</em>.</h2>' +
-      '<div class="marcas-row">' + CFG.MARCAS.map(function (m) {
-        var peca = m.logo
-          ? '<img src="' + esc(ROOT + m.logo) + '" alt="' + esc(m.nome) + '" loading="lazy" decoding="async">'
-          : '<span class="marca-txt">' + esc(m.nome) + '</span>';
-        return '<div class="marca">' + peca + (m.selo ? '<span class="marca-selo">' + esc(m.selo) + '</span>' : '') + '</div>';
+      '<div class="marcas-row">' + comLogo.map(function (m) {
+        return '<div class="marca"><img src="' + esc(ROOT + m.logo) + '" alt="' + esc(m.nome) + '" loading="lazy" decoding="async"></div>';
       }).join("") + '</div></div>';
   }
 
