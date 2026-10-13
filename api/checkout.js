@@ -57,24 +57,21 @@ module.exports = async function handler(req, res) {
   if (!nome) return res.status(400).json({ erro: "nome obrigatório" });
 
   let titulo = "Alpha Studio Space · " + oferta.nome;
-  let detalhe = "";
   let show = null;
   if (oferta.id === "show") {
     show = CONFIG.SHOWS.find(s => s.id === b.show);
     if (!show || !show.disponivel) return res.status(400).json({ erro: "data indisponível" });
-    const janela = b.janela === "After" ? "After" : "Esquenta";
-    titulo += " · " + show.artista + " " + show.dia.replace(/^.*· /, "") + " · " + janela;
-    detalhe = janela;
+    titulo += " · " + show.artista + " " + show.dia.replace(/^.*· /, "") + " · " + show.horario;
   }
 
   const total = oferta[pay];
   const valor = Math.round(total * (oferta.sinal || 1));
   const ref = ["studio", oferta.id, show ? show.id : "-", pay, Date.now().toString(36)].join("|");
   const base = siteUrl(req);
-  const volta = base + "/?pagamento={st}&oferta=" + oferta.id + (show ? "&show=" + show.id : "");
+  const volta = base + (oferta.pagina || "/") + "?pagamento={st}&oferta=" + oferta.id + (show ? "&show=" + show.id : "");
   const metadata = {
     origem: "alpha-studio-site", oferta: oferta.id, show: show ? show.id : "",
-    janela: detalhe, forma: pay, nome, whatsapp: wpp, quando, total
+    forma: pay, nome, whatsapp: wpp, quando, total
   };
 
   try {
@@ -84,7 +81,7 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ erro: "e-mail obrigatório para a assinatura" });
       }
       const sub = await mp("/preapproval", {
-        reason: "Alpha Studio Space · Social Club (trimestral)",
+        reason: "Alpha Studio Space · " + oferta.nome + " (trimestral)",
         external_reference: ref,
         payer_email: email,
         back_url: volta.replace("{st}", "assinatura"),
