@@ -413,6 +413,6 @@ footer .f-legal{flex-basis:100%;font-size:12.5px;color:var(--muted);margin-top:1
 .marcas h2 em{color:var(--gold-bright);}
 .marcas-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px 56px;margin-top:34px;}
 .marca{position:relative;display:flex;align-items:center;}
-.marca img{height:58px;width:auto;max-width:190px;object-fit:contain;opacity:.88;transition:opacity .25s;}
+.marca img{height:58px;width:auto;max-width:220px;object-fit:contain;opacity:.88;transition:opacity .25s;}
 .marca img:hover{opacity:1;}
 @media(max-width:640px){ .marcas-row{gap:22px 34px;} .marca img{height:44px;max-width:145px;} }

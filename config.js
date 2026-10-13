@@ -36,14 +36,16 @@
       }
     ],
 
-    /* Patrocínio (faixa no fim das páginas). Para pôr o logo, solte o PNG
+    /* Patrocínio (faixa no fim das páginas). Logos brancos, fundo transparente,
+       tirados do Club Parceria (Aleda, Bombaco, Squadafum) e da Nowdays.
+       Para pôr outro logo, solte o PNG
        com fundo transparente em img/marcas/ e preencha "logo".
        Marca sem logo oficial não aparece. */
     MARCAS: [
       { nome: "Aleda", logo: "img/marcas/aleda.png" },
       { nome: "Bombaco", logo: "img/marcas/bombaco.png" },
-      { nome: "Squadafum", logo: "" },
-      { nome: "Nowdays", logo: "" }
+      { nome: "Squadafum", logo: "img/marcas/squadafum.png" },
+      { nome: "Nowdays", logo: "img/marcas/nowdays.png" }
     ]
   };
 
