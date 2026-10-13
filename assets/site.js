@@ -22,16 +22,24 @@
 
   var state = { show: null, pay: "pix" };
 
-  /* Textos vindos do config: <span data-cfg="PRAZO"></span> */
+  /* Textos vindos do config: <span data-cfg="ESTADIO"></span> */
   document.querySelectorAll("[data-cfg]").forEach(function (el) {
     el.textContent = CFG[el.getAttribute("data-cfg")];
   });
 
-  /* Faixa de pré-venda (<div data-prazo>) some depois do PRAZO ("dd/mm") */
-  if (CFG.PRAZO) {
-    var pz = CFG.PRAZO.split("/");
-    if (agora.getFullYear() + "-" + pad(+pz[1]) + "-" + pad(+pz[0]) < HOJE)
-      document.querySelectorAll("[data-prazo]").forEach(function (el) { el.style.display = "none"; });
+  /* Contagem para a inauguração na faixa de pré-venda; depois da data, a faixa some */
+  if (CFG.INAUGURACAO) {
+    var alvo = new Date(CFG.INAUGURACAO);
+    var conta = function () {
+      var ms = alvo - new Date();
+      if (isNaN(ms)) return;
+      if (ms <= 0) { document.querySelectorAll("[data-prazo]").forEach(function (el) { el.style.display = "none"; }); return; }
+      var d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+      document.querySelectorAll("[data-contagem]").forEach(function (el) {
+        el.innerHTML = ' · inaugura em <b>' + d + 'd ' + pad(h) + 'h ' + pad(m) + 'min</b>';
+      });
+    };
+    conta(); setInterval(conta, 30000);
   }
 
   /* Botões que só levam ao Instagram: <a data-ig-link="espaco"> (mantém o texto do botão) */
