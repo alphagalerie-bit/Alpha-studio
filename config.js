@@ -7,8 +7,11 @@
   var CONFIG = {
     NOME: "Alpha House",            /* nome do espaço: aparece no Mercado Pago e no WhatsApp */
     DESCRITOR: "ALPHAHOUSE",        /* nome na fatura do cartão (até 13 letras, sem acento) */
-    WPP: "5511926441522",           /* WhatsApp da captação */
-    PRAZO: "30/10",                 /* fim da pré-venda: a faixa do topo some sozinha depois desse dia */
+    WPP: "5511942920076",           /* WhatsApp da Alpha Galerie */
+    /* Inauguração (ano-mês-dia e hora, ex: "2026-11-07T19:00"). Com a data, a faixa do topo
+       mostra a contagem regressiva sem escrever a data; depois dela, a faixa some.
+       Vazio = faixa de pré-venda sem contagem. */
+    INAUGURACAO: "",
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
     /* Instagram (sem @). espaco: página inicial e esquenta. club: Clube Alpha. */
