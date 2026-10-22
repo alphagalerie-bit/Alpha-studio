@@ -35,8 +35,6 @@
        horario: opcional; vazio = horário combinado com o cliente.
        Marque disponivel:false quando a data for vendida. */
     SHOWS: [
-      { id: "mariah", data: "2026-11-17", dia: "Terça · 17/11", artista: "Mariah Carey", disponivel: true,
-        horario: "" },
       { id: "seal", data: "2026-11-28", dia: "Sábado · 28/11", artista: "Seal", disponivel: true,
         horario: "" }
     ],
