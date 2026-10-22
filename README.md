@@ -4,8 +4,8 @@ Site da Alpha House: https://alphastudio.alphagalerie.com
 
 | Página | O que vende |
 | --- | --- |
-| `/` | Entrada: multiespaço cultural (conversas, vitrine, comunidade), esquenta, Clube Alpha e eventos |
-| `/conversa/` | Conversas: o convidado conta a história, mostra o trabalho e leva o vídeo (cotas Participação, Marca parceira e Patrocínio master) |
+| `/` | Entrada: a Alpha House como comunidade (história, vitrine, conexão), Clube Alpha, esquenta e eventos |
+| `/comunidade/` | Comunidade Alpha House: adesão de membro fundador, marca apoiadora e apoiador master |
 | `/esquenta/` | Lugar privativo no dia de show (até 12 pessoas, 14h às 18h) |
 | `/club/` | Clube Alpha, plano trimestral |
 

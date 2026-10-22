@@ -32,7 +32,7 @@
   /* Vagas da oferta: <span data-vagas-de="participacao"></span> */
   document.querySelectorAll("[data-vagas-de]").forEach(function (el) {
     var o = acha(el.getAttribute("data-vagas-de"));
-    if (o && o.vagas) el.textContent = o.vagas + (o.vagas === 1 ? " vaga" : " vagas") + " na temporada";
+    if (o && o.vagas) el.textContent = o.vagas + (o.vagas === 1 ? " vaga" : " vagas") + " de fundador";
     else el.remove();
   });
 
