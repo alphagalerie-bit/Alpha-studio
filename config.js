@@ -26,7 +26,7 @@
        A contagem lê as vendas aprovadas do site no Mercado Pago (api/meta.js).
        Vendeu fora do site (Pix pelo WhatsApp)? Some em extraValor (R$) e em extraVagas
        (ex.: { membro: 2 }) para a barra e as vagas restantes ficarem certas. */
-    META: { alvo: 20000, desde: "2026-10-01", extraValor: 0, extraVagas: {} },
+    META: { alvo: 22800, desde: "2026-10-01", extraValor: 0, extraVagas: {} },
 
     /* Datas de show (página /esquenta).
        data: dia do show (ano-mês-dia). A data sai do site sozinha na véspera do show.
@@ -53,7 +53,7 @@
       {
         id: "club", nome: "Club Alpha", pagina: "/club/",
         uso: "Membro do Club Alpha · plano trimestral",
-        pix: 300, cartao: 316, unidade: "/ trimestre", sinal: 1,
+        pix: 300, cartao: 316, unidade: "/ trimestre", sinal: 1, vagas: 40,  /* sócios fundadores */
         assinatura: { meses: 3 },  /* no cartão vira assinatura com renovação automática */
         barra: "R$ 100/mês · plano trimestral", botao: "Ser membro"
       },
