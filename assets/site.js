@@ -52,9 +52,13 @@
       if (!d) return;
       pintaVagas(d.vendidas);
       var pct = Math.max(0, Math.min(100, d.pct | 0));
+      /* Quantos fundadores já entraram (todas as ofertas menos o esquenta), a partir de um mínimo */
+      var dentro = Object.keys(d.vendidas || {}).reduce(function (t, k) { return k === "show" ? t : t + (d.vendidas[k] | 0); }, 0);
+      var minimo = (CFG.META && CFG.META.mostrarFundadoresDe) || 3;
       metaEls.forEach(function (el) {
         el.innerHTML =
           '<div class="meta-top"><span>Meta para abrir a casa</span><b' + (pct ? '>' + pct + "%" : ' class="txt">Começando agora') + '</b></div>' +
+          (dentro >= minimo ? '<p class="meta-dentro"><b>' + dentro + ' fundadores</b> já fazem parte</p>' : '') +
           '<div class="meta-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"><i style="width:' + Math.max(pct, 2) + '%"></i></div>' +
           '<p class="meta-txt">' + (pct >= 100 ? "Meta batida! A Alpha House vai abrir. Ainda dá tempo de entrar como fundador."
             : pct ? "Quanto mais gente entra, mais perto a gente fica de abrir as portas. Não fica de fora."
@@ -397,6 +401,12 @@
     };
     grid.addEventListener("click", function (e) { var c = e.target.closest(".pac"); if (c) marca(c); });
     grid.addEventListener("focusin", function (e) { var c = e.target.closest(".pac"); if (c) marca(c); });
+  });
+
+  /* ====== INDICAR: manda o link da comunidade para um amigo pelo WhatsApp ====== */
+  document.querySelectorAll("[data-indicar]").forEach(function (a) {
+    a.href = "https://wa.me/?text=" + encodeURIComponent("Olha isso: a Alpha House é uma comunidade multicultural para quem cria e empreende. Tem tudo a ver com você! " + ROOT + "comunidade/");
+    a.target = "_blank"; a.rel = "noopener";
   });
 
   /* ====== FAQ ====== */
