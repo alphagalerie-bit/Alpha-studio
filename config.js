@@ -15,7 +15,7 @@
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
     /* Instagram (sem @). espaco: página inicial e esquenta. club: Clube Alpha. idealizador: quem criou o projeto. */
-    INSTAGRAM: { espaco: "alphahousesp", club: "alphahousesp", idealizador: "leohempbrasil" },
+    INSTAGRAM: { espaco: "alphahousesp", club: "alphahousesp", idealizador: "consultorcannabicobrasil" },
 
     /* Pixel da Meta (só o número). Vazio = desligado. Com o número, mede visitas,
        cliques em pagar, contatos no WhatsApp e compras aprovadas. */
