@@ -29,12 +29,40 @@
     el.textContent = CFG[el.getAttribute("data-cfg")];
   });
 
-  /* Vagas da oferta: <span data-vagas-de="participacao"></span> */
-  document.querySelectorAll("[data-vagas-de]").forEach(function (el) {
-    var o = acha(el.getAttribute("data-vagas-de"));
-    if (o && o.vagas) el.textContent = o.vagas + (o.vagas === 1 ? " vaga" : " vagas") + " de fundador";
-    else el.remove();
-  });
+  /* Vagas da oferta: <span data-vagas-de="membro"></span>. Começa com o total do config
+     e, quando a meta responde, mostra quantas restam. */
+  function pintaVagas(vendidas) {
+    document.querySelectorAll("[data-vagas-de]").forEach(function (el) {
+      var o = acha(el.getAttribute("data-vagas-de"));
+      if (!o || !o.vagas) { el.remove(); return; }
+      var resta = Math.max(0, o.vagas - ((vendidas && vendidas[o.id]) || 0));
+      el.textContent = resta === 0 ? "Vagas esgotadas"
+        : resta === o.vagas ? o.vagas + " vagas de fundador"
+        : (resta === 1 ? "Resta 1 vaga" : "Restam " + resta + " vagas") + " de " + o.vagas;
+      var card = el.closest(".pac"), btn = card && card.querySelector("[data-reserve]");
+      if (btn && resta === 0) { btn.disabled = true; btn.textContent = "Esgotado"; }
+    });
+  }
+  pintaVagas(null);
+
+  /* Meta da pré-venda: <div data-meta></div> vira a barra de progresso (só porcentagem) */
+  var metaEls = document.querySelectorAll("[data-meta]");
+  if (metaEls.length || document.querySelector("[data-vagas-de]")) {
+    fetch(ROOT + "api/meta").then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (!d) return;
+      pintaVagas(d.vendidas);
+      var pct = Math.max(0, Math.min(100, d.pct | 0));
+      metaEls.forEach(function (el) {
+        el.innerHTML =
+          '<div class="meta-top"><span>Meta para abrir a casa</span><b>' + (pct ? pct + "%" : "Começando agora") + '</b></div>' +
+          '<div class="meta-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"><i style="width:' + Math.max(pct, 2) + '%"></i></div>' +
+          '<p class="meta-txt">' + (pct >= 100 ? "Meta batida! A Alpha House vai abrir. Ainda dá tempo de entrar como fundador."
+            : pct ? "Quanto mais gente entra, mais perto a gente fica de abrir as portas. Não fica de fora."
+            : "Os primeiros fundadores estão entrando agora. Seja um deles.") + '</p>';
+        el.hidden = false;
+      });
+    }).catch(function () {});
+  }
 
   /* Contagem para a inauguração na faixa de pré-venda; depois da data, a faixa some */
   if (CFG.INAUGURACAO) {
