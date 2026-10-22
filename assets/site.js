@@ -433,6 +433,22 @@
     }).observe(heroEl);
   }
 
+  /* Página sem modal (home): a barra fixa leva para os planos */
+  var ctaLink = document.body.getAttribute("data-cta-link");
+  if (!OFERTA && ctaLink && heroEl && "IntersectionObserver" in window) {
+    var barra = document.createElement("div");
+    barra.className = "cta-bar";
+    barra.innerHTML = '<span class="cta-txt">' + (document.body.getAttribute("data-cta-texto") || "") + '</span>' +
+      '<a class="btn btn-gold" href="' + ctaLink + '">' + (document.body.getAttribute("data-cta-botao") || "Ver planos") + '</a>';
+    document.body.appendChild(barra);
+    document.body.classList.add("has-cta");
+    new IntersectionObserver(function (es) {
+      var mostrar = !es[0].isIntersecting;
+      barra.classList.toggle("on", mostrar);
+      document.body.classList.toggle("cta-on", mostrar);
+    }).observe(heroEl);
+  }
+
   refresh();
 
   /* ====== REVEAL ====== */
