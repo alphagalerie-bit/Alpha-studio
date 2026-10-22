@@ -26,3 +26,5 @@ Variáveis de ambiente na Vercel:
 - `SITE_URL` (opcional): endereço do site para a volta do pagamento, por exemplo `https://alphastudio.alphagalerie.com`.
 
 Sem `MP_ACCESS_TOKEN`, o botão de pagar leva o cliente para o WhatsApp.
+
+

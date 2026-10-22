@@ -21,14 +21,22 @@
        cliques em pagar, contatos no WhatsApp e compras aprovadas. */
     META_PIXEL: "",
 
+    /* Meta da pré-venda (barra de progresso). O site mostra só a porcentagem, nunca valores.
+       alvo: quanto a pré-venda precisa juntar (R$). desde: a partir de que dia contar as vendas.
+       A contagem lê as vendas aprovadas do site no Mercado Pago (api/meta.js).
+       Vendeu fora do site (Pix pelo WhatsApp)? Some em extraValor (R$) e em extraVagas
+       (ex.: { membro: 2 }) para a barra e as vagas restantes ficarem certas. */
+    META: { alvo: 20000, desde: "2026-10-01", extraValor: 0, extraVagas: {} },
+
     /* Datas de show (página /esquenta).
        data: dia do show (ano-mês-dia). A data sai do site sozinha na véspera do show.
+       horario: opcional; vazio = horário combinado com o cliente.
        Marque disponivel:false quando a data for vendida. */
     SHOWS: [
       { id: "mariah", data: "2026-11-17", dia: "Terça · 17/11", artista: "Mariah Carey", disponivel: true,
-        horario: "14h às 18h" },
+        horario: "" },
       { id: "seal", data: "2026-11-28", dia: "Sábado · 28/11", artista: "Seal", disponivel: true,
-        horario: "14h às 18h" }
+        horario: "" }
     ],
 
     /* Preços com a taxa do Mercado Pago embutida: pix (0,99%) e cartão à vista (4,98%).
@@ -36,7 +44,7 @@
     OFERTAS: [
       {
         id: "show", nome: "Esquenta do show", pagina: "/esquenta/",
-        uso: "Até 12 pessoas · 4 horas · das 14h às 18h",
+        uso: "Até 12 pessoas · lugar privativo antes do show",
         pix: 2200, cartao: 2315, unidade: "/ reserva", sinal: 1,   /* pago integral e antecipado, como ingresso */
         pessoas: 12,               /* usado no "por pessoa" da página */
         nota: "Pagamento antecipado e integral, como um ingresso",
@@ -49,26 +57,26 @@
         assinatura: { meses: 3 },  /* no cartão vira assinatura com renovação automática */
         barra: "R$ 100/mês · plano trimestral", botao: "Ser membro"
       },
-      /* Comunidade Alpha House (página /comunidade): quem entra conta a sua história no sofá
-         da casa, expõe o trabalho e faz parte dos encontros. vagas: aparece no card. */
+      /* Comunidade Alpha House (página /comunidade): quem entra conta a sua história na Live Alpha,
+         expõe o trabalho e faz parte dos encontros. vagas: aparece no card. */
       {
         id: "membro", nome: "Membro fundador da comunidade", pagina: "/comunidade/",
-        uso: "Adesão única de membro fundador da Comunidade Alpha House",
+        uso: "Adesão única de membro fundador da comunidade Alpha House",
         pix: 250, cartao: 263, unidade: "/ adesão", sinal: 1, vagas: 30,
         nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
-        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para marcar o dia de contar a sua história.",
+        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para a gente te receber.",
         barra: "Membro fundador · {preco}", botao: "Quero fazer parte"
       },
       {
         id: "marca", nome: "Marca apoiadora", pagina: "/comunidade/",
-        uso: "Sua marca fortalecendo a comunidade, presente nos encontros e conversas",
+        uso: "Sua marca perto de quem cria, presente nos encontros e na Live Alpha",
         pix: 990, cartao: 1042, unidade: "/ adesão", sinal: 1, vagas: 5,
         nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
         apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para alinhar a presença da sua marca."
       },
       {
         id: "master", nome: "Apoiador master", pagina: "/comunidade/",
-        uso: "A marca que apresenta a Alpha House, com exclusividade na sua categoria",
+        uso: "A marca que apresenta a Live Alpha, com exclusividade na sua categoria",
         pix: 2900, cartao: 3052, unidade: "/ adesão", sinal: 1, vagas: 2,
         nota: "Exclusividade na sua categoria · 100% de volta se a Alpha House não inaugurar",
         apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para alinhar a presença da sua marca."
