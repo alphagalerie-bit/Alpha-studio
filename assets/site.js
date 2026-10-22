@@ -116,7 +116,7 @@
         '<span class="date">' + s.dia + '</span>' +
         (faltam && s.disponivel ? '<span class="falta">' + (faltam === 1 ? "É amanhã" : "Faltam " + faltam + " dias") + '</span>' : '') +
         '<h3>' + s.artista + '</h3>' +
-        '<p class="meta"><b style="color:var(--ink);font-weight:500">Esquenta das ' + s.horario +'</b></p>' +
+        '<p class="meta"><b style="color:var(--ink);font-weight:500">' + (s.horario ? "Esquenta das " + s.horario : "Esquenta antes do show") + '</b></p>' +
         '<span class="status">' + (s.disponivel ? "Disponível · 1 reserva" : "Reservado") + '</span>' +
         '<button class="btn ' + (s.disponivel ? 'btn-gold' : 'btn-ghost') + '" data-reserve data-show="' + s.id + '"' + (s.disponivel ? '' : ' disabled') + '>' +
         (s.disponivel ? 'Reservar esta data' : 'Data reservada') + '</button>';
@@ -126,7 +126,7 @@
       var o = document.createElement("label");
       o.className = "opt" + (s.disponivel ? "" : " off");
       o.setAttribute("data-show-opt", s.id);
-      o.innerHTML = '<span class="o-name">' + s.artista + '<span>' + s.dia + ' · ' + s.horario + '</span></span>' +
+      o.innerHTML = '<span class="o-name">' + s.artista + '<span>' + s.dia + (s.horario ? ' · ' + s.horario : '') + '</span></span>' +
         '<span class="o-price" style="font-size:14px;font-family:inherit;color:var(--muted)">' + (s.disponivel ? '' : 'Reservado') + '</span>' +
         '<input type="radio" name="show" value="' + s.id + '"' + (s.disponivel ? '' : ' disabled') + '>';
       optShows.appendChild(o);
@@ -251,7 +251,7 @@
     var L = ["Olá! Quero garantir *" + OFERTA.nome + "* na " + CFG.NOME + ".", ""];
     if (OFERTA.id === "show") {
       var s = showAtual();
-      L.push("Show: " + s.artista + " (" + s.dia + ", " + s.horario + ")");
+      L.push("Show: " + s.artista + " (" + s.dia + (s.horario ? ", " + s.horario : "") + ")");
     }
     if (OFERTA.assinatura) L.push("Plano: trimestral, R$ 100 por mês");
     L.push("Nome: " + f.nome);

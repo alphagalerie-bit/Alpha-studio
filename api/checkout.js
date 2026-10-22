@@ -69,7 +69,7 @@ module.exports = async function handler(req, res) {
     show = CONFIG.SHOWS.find(s => s.id === b.show);
     if (!show || !show.disponivel) return res.status(400).json({ erro: "data indisponível" });
     if (show.data && show.data <= hojeSP()) return res.status(400).json({ erro: "data encerrada" });
-    titulo += " · " + show.artista + " " + show.dia.replace(/^.*· /, "") + " · " + show.horario;
+    titulo += " · " + show.artista + " " + show.dia.replace(/^.*· /, "") + (show.horario ? " · " + show.horario : "");
   }
 
   const total = oferta[pay];
