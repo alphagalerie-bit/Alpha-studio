@@ -14,7 +14,7 @@
     INAUGURACAO: "",
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
-    /* Instagram (sem @). espaco: página inicial e esquenta. club: Clube Alpha. idealizador: quem criou o projeto. */
+    /* Instagram (sem @). espaco: página inicial e esquenta. club: Club Alpha. idealizador: quem criou o projeto. */
     INSTAGRAM: { espaco: "alphahousesp", club: "alphahousesp", idealizador: "consultorcannabicobrasil" },
 
     /* Pixel da Meta (só o número). Vazio = desligado. Com o número, mede visitas,
@@ -51,8 +51,8 @@
         barra: "{preco} · até 12 pessoas", botao: "Reservar"   /* barra fixa no celular */
       },
       {
-        id: "club", nome: "Clube Alpha", pagina: "/club/",
-        uso: "Membro do Clube Alpha · plano trimestral",
+        id: "club", nome: "Club Alpha", pagina: "/club/",
+        uso: "Membro do Club Alpha · plano trimestral",
         pix: 300, cartao: 316, unidade: "/ trimestre", sinal: 1,
         assinatura: { meses: 3 },  /* no cartão vira assinatura com renovação automática */
         barra: "R$ 100/mês · plano trimestral", botao: "Ser membro"
@@ -64,7 +64,7 @@
         uso: "Adesão única de membro fundador da comunidade Alpha House",
         pix: 250, cartao: 263, unidade: "/ adesão", sinal: 1, vagas: 30,
         nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
-        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para a gente te receber.",
+        apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama no WhatsApp para a gente te receber.",
         barra: "Membro fundador · {preco}", botao: "Quero fazer parte"
       },
       {
@@ -72,14 +72,14 @@
         uso: "Sua marca perto de quem cria, presente nos encontros e na Live Alpha",
         pix: 990, cartao: 1042, unidade: "/ adesão", sinal: 1, vagas: 5,
         nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
-        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para alinhar a presença da sua marca."
+        apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       },
       {
         id: "master", nome: "Apoiador master", pagina: "/comunidade/",
         uso: "A marca que apresenta a Live Alpha, com exclusividade na sua categoria",
         pix: 2900, cartao: 3052, unidade: "/ adesão", sinal: 1, vagas: 2,
         nota: "Exclusividade na sua categoria · 100% de volta se a Alpha House não inaugurar",
-        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para alinhar a presença da sua marca."
+        apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       }
     ],
 

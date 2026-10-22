@@ -213,8 +213,9 @@
       ctaTxt.textContent = OFERTA_PADRAO.barra.replace("{preco}", BRL(OFERTA_PADRAO[state.pay]));
       ctaTxt.innerHTML = ctaTxt.innerHTML.replace(/(R\$\s?[\d.]+(,\d+)?)/, "<b>$1</b>");
     }
-    if ($("fEmailLbl")) $("fEmailLbl").textContent =
-      (OFERTA.assinatura && state.pay === "cartao") ? "Seu e-mail (para a assinatura)" : "Seu e-mail";
+    /* E-mail só quando o Mercado Pago exige: assinatura no cartão */
+    if ($("fEmail")) $("fEmail").closest(".field").hidden = !(OFERTA.assinatura && state.pay === "cartao");
+    if ($("fEmailLbl")) $("fEmailLbl").textContent = "Seu e-mail (o Mercado Pago pede para a assinatura)";
   }
 
   /* ====== MODAL ====== */
@@ -260,7 +261,8 @@
       nome: $("fNome").value.trim(),
       wpp: $("fWpp").value.trim(),
       email: $("fEmail") ? $("fEmail").value.trim() : "",
-      data: $("fData") ? $("fData").value.trim() : ""
+      data: $("fData") ? $("fData").value.trim() : "",
+      insta: $("fInsta") ? $("fInsta").value.trim() : ""
     };
   }
   function showAtual() { return SHOWS.find(function (x) { return x.id === state.show; }); }
@@ -286,6 +288,7 @@
     L.push("Nome: " + f.nome);
     if (f.wpp) L.push("Meu WhatsApp: " + f.wpp);
     if (f.data) L.push(($("fData").getAttribute("data-rotulo") || "Quando quero usar") + ": " + f.data);
+    if (f.insta) L.push("Instagram: " + f.insta);
     L.push("Pagamento: " + PAY_NOME[state.pay]);
     L.push("Valor: " + BRL(preco()) + (OFERTA.sinal < 1 ? " (sinal de " + BRL(sinal()) + ")" : ""));
     L.push("", "Pode confirmar e me mandar o Pix?");
@@ -307,7 +310,7 @@
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ oferta: OFERTA.id, show: state.show, pay: state.pay,
-        nome: f.nome, email: f.email, wpp: f.wpp, data: f.data })
+        nome: f.nome, email: f.email, wpp: f.wpp, data: f.data, insta: f.insta })
     }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
       .then(function (x) {
         if (x.ok && x.d.url) { window.location.href = x.d.url; return; }
@@ -329,7 +332,7 @@
     var oque = OFERTA.nome + (s ? " · " + s.artista + " (" + s.dia + ")" : "");
     var txt = {
       aprovado:   ["Pagamento aprovado!", OFERTA.apos || "Chama a gente no WhatsApp para receber o endereço e as regras da portaria."],
-      assinatura: ["Assinatura criada!", "Bem-vindo ao Clube Alpha. Chama a gente no WhatsApp para agendar sua primeira visita."],
+      assinatura: ["Assinatura criada!", "Bem-vindo ao Club Alpha. Chama a gente no WhatsApp para agendar sua primeira visita."],
       pendente:   ["Pagamento em análise.", "Assim que o Mercado Pago aprovar, a gente confirma no WhatsApp."],
       falhou:     ["O pagamento não foi concluído.", "Você pode tentar de novo ou fechar com a gente pelo WhatsApp."]
     }[st];
