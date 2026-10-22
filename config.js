@@ -48,6 +48,30 @@
         pix: 300, cartao: 316, unidade: "/ trimestre", sinal: 1,
         assinatura: { meses: 3 },  /* no cartão vira assinatura com renovação automática */
         barra: "R$ 100/mês · plano trimestral", botao: "Ser membro"
+      },
+      /* Comunidade Alpha House (página /comunidade): quem entra conta a sua história no sofá
+         da casa, expõe o trabalho e faz parte dos encontros. vagas: aparece no card. */
+      {
+        id: "membro", nome: "Membro fundador da comunidade", pagina: "/comunidade/",
+        uso: "Adesão única de membro fundador da Comunidade Alpha House",
+        pix: 250, cartao: 263, unidade: "/ adesão", sinal: 1, vagas: 30,
+        nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
+        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para marcar o dia de contar a sua história.",
+        barra: "Membro fundador · {preco}", botao: "Quero fazer parte"
+      },
+      {
+        id: "marca", nome: "Marca apoiadora", pagina: "/comunidade/",
+        uso: "Sua marca fortalecendo a comunidade, presente nos encontros e conversas",
+        pix: 990, cartao: 1042, unidade: "/ adesão", sinal: 1, vagas: 5,
+        nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
+        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para alinhar a presença da sua marca."
+      },
+      {
+        id: "master", nome: "Apoiador master", pagina: "/comunidade/",
+        uso: "A marca que apresenta a Alpha House, com exclusividade na sua categoria",
+        pix: 2900, cartao: 3052, unidade: "/ adesão", sinal: 1, vagas: 2,
+        nota: "Exclusividade na sua categoria · 100% de volta se a Alpha House não inaugurar",
+        apos: "Bem-vindo à comunidade! Chama a gente no WhatsApp para alinhar a presença da sua marca."
       }
     ],
 

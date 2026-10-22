@@ -459,3 +459,14 @@ footer .f-legal{flex-basis:100%;font-size:12.5px;color:var(--muted);margin-top:1
 .ig-band .eyebrow{justify-content:center;}
 .ig-band .lead{margin-left:auto;margin-right:auto;}
 .ig-band .hero-actions{justify-content:center;}
+
+/* Conversas: quatro cards por linha e etiqueta de vagas */
+.perks.quatro{grid-template-columns:repeat(4,1fr);}
+@media(max-width:1060px){ .perks.quatro{grid-template-columns:1fr 1fr;} }
+@media(max-width:560px){ .perks.quatro{grid-template-columns:1fr;} }
+.pac .vagas{display:inline-block;align-self:flex-start;margin-top:14px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:999px;padding:4px 11px;}
+.sheet .uso{color:var(--muted);font-size:14px;margin:-6px 0 18px;}
+a.perk{display:block;color:inherit;text-decoration:none;transition:border-color .25s,transform .25s;}
+a.perk:hover{border-color:var(--gold);transform:translateY(-2px);}
+/* No celular, o texto vem antes da foto em todos os blocos com foto */
+@media(max-width:760px){ .rt-grid .photo{order:2;} }

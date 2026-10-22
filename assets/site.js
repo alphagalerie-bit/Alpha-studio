@@ -15,7 +15,9 @@
   }
   /* Shows saem do site na véspera (não dá para preparar o espaço no mesmo dia) */
   var SHOWS = (CFG.SHOWS || []).filter(function (s) { return !s.data || s.data > HOJE; });
-  var OFERTA = CFG.OFERTAS.find(function (o) { return o.id === document.body.getAttribute("data-oferta"); });
+  function acha(id) { return CFG.OFERTAS.find(function (o) { return o.id === id; }); }
+  /* Página com várias ofertas: o botão diz qual abre (<button data-reserve data-oferta-id="marca">) */
+  var OFERTA = acha(document.body.getAttribute("data-oferta")), OFERTA_PADRAO = OFERTA;
   var BRL = function (n) { return "R$ " + n.toLocaleString("pt-BR"); };
   var PAY_NOME = { pix: "Pix", cartao: "Cartão à vista" };
   var $ = function (id) { return document.getElementById(id); };
@@ -25,6 +27,13 @@
   /* Textos vindos do config: <span data-cfg="ESTADIO"></span> */
   document.querySelectorAll("[data-cfg]").forEach(function (el) {
     el.textContent = CFG[el.getAttribute("data-cfg")];
+  });
+
+  /* Vagas da oferta: <span data-vagas-de="participacao"></span> */
+  document.querySelectorAll("[data-vagas-de]").forEach(function (el) {
+    var o = acha(el.getAttribute("data-vagas-de"));
+    if (o && o.vagas) el.textContent = o.vagas + (o.vagas === 1 ? " vaga" : " vagas") + " de fundador";
+    else el.remove();
   });
 
   /* Contagem para a inauguração na faixa de pré-venda; depois da data, a faixa some */
@@ -142,7 +151,12 @@
   }
 
   function refresh() {
+    document.querySelectorAll("[data-preco-de]").forEach(function (el) {
+      var o = acha(el.getAttribute("data-preco-de")); if (o) el.textContent = BRL(o[state.pay]);
+    });
     if (!OFERTA) return;
+    if ($("modalNome")) $("modalNome").textContent = OFERTA.nome.replace(/^.* · /, "");
+    if ($("modalUso")) $("modalUso").textContent = OFERTA.uso;
     document.querySelectorAll("[data-price]").forEach(function (el) { el.textContent = BRL(preco()); });
     document.querySelectorAll("[data-sinal]").forEach(function (el) { el.textContent = BRL(sinal()); });
     if (OFERTA.pessoas) document.querySelectorAll("[data-pessoa]").forEach(function (el) {
@@ -166,8 +180,8 @@
       $("subTotal").textContent = sub;
     }
     var ctaTxt = document.querySelector(".cta-bar .cta-txt");
-    if (ctaTxt) {  /* o primeiro valor em R$ fica em destaque */
-      ctaTxt.textContent = OFERTA.barra.replace("{preco}", BRL(preco()));
+    if (ctaTxt) {  /* a barra mostra sempre a oferta principal da página; o primeiro R$ fica em destaque */
+      ctaTxt.textContent = OFERTA_PADRAO.barra.replace("{preco}", BRL(OFERTA_PADRAO[state.pay]));
       ctaTxt.innerHTML = ctaTxt.innerHTML.replace(/(R\$\s?[\d.]+(,\d+)?)/, "<b>$1</b>");
     }
     if ($("fEmailLbl")) $("fEmailLbl").textContent =
@@ -177,9 +191,10 @@
   /* ====== MODAL ====== */
   var modal = $("modal"), lastFocus = null;
   function firstShow() { var s = SHOWS.find(function (x) { return x.disponivel; }); return s ? s.id : null; }
-  function openModal(showId) {
+  function openModal(showId, ofertaId) {
     if (!modal) return;
     lastFocus = document.activeElement;
+    OFERTA = (ofertaId && acha(ofertaId)) || OFERTA_PADRAO;
     if (showId) state.show = showId;
     if (!state.show) state.show = firstShow();
     refresh();
@@ -197,7 +212,7 @@
 
   document.addEventListener("click", function (e) {
     var t;
-    if ((t = e.target.closest("[data-reserve]"))) { if (!t.disabled) openModal(t.getAttribute("data-show")); return; }
+    if ((t = e.target.closest("[data-reserve]"))) { if (!t.disabled) openModal(t.getAttribute("data-show"), t.getAttribute("data-oferta-id")); return; }
     if ((t = e.target.closest("[data-pay]"))) { state.pay = t.getAttribute("data-pay"); refresh(); return; }
     if ((t = e.target.closest("[data-show-opt]"))) {
       if (t.classList.contains("off")) { e.preventDefault(); return; }
@@ -241,7 +256,7 @@
     if (OFERTA.assinatura) L.push("Plano: trimestral, R$ 100 por mês");
     L.push("Nome: " + f.nome);
     if (f.wpp) L.push("Meu WhatsApp: " + f.wpp);
-    if (f.data) L.push("Quando quero usar: " + f.data);
+    if (f.data) L.push(($("fData").getAttribute("data-rotulo") || "Quando quero usar") + ": " + f.data);
     L.push("Pagamento: " + PAY_NOME[state.pay]);
     L.push("Valor: " + BRL(preco()) + (OFERTA.sinal < 1 ? " (sinal de " + BRL(sinal()) + ")" : ""));
     L.push("", "Pode confirmar e me mandar o Pix?");
@@ -279,11 +294,12 @@
   /* Volta do Mercado Pago: ?pagamento=aprovado|pendente|falhou|assinatura */
   (function () {
     var q = new URLSearchParams(location.search), st = q.get("pagamento");
+    if (q.get("oferta") && acha(q.get("oferta"))) OFERTA = acha(q.get("oferta"));
     if (!st || !OFERTA) return;
     var s = SHOWS.find(function (x) { return x.id === q.get("show"); });
     var oque = OFERTA.nome + (s ? " · " + s.artista + " (" + s.dia + ")" : "");
     var txt = {
-      aprovado:   ["Pagamento aprovado!", "Chama a gente no WhatsApp para receber o endereço e as regras da portaria."],
+      aprovado:   ["Pagamento aprovado!", OFERTA.apos || "Chama a gente no WhatsApp para receber o endereço e as regras da portaria."],
       assinatura: ["Assinatura criada!", "Bem-vindo ao Clube Alpha. Chama a gente no WhatsApp para agendar sua primeira visita."],
       pendente:   ["Pagamento em análise.", "Assim que o Mercado Pago aprovar, a gente confirma no WhatsApp."],
       falhou:     ["O pagamento não foi concluído.", "Você pode tentar de novo ou fechar com a gente pelo WhatsApp."]
