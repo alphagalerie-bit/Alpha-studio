@@ -470,3 +470,10 @@ a.perk{display:block;color:inherit;text-decoration:none;transition:border-color 
 a.perk:hover{border-color:var(--gold);transform:translateY(-2px);}
 /* No celular, o texto vem antes da foto em todos os blocos com foto */
 @media(max-width:760px){ .rt-grid .photo{order:2;} }
+
+/* Vídeo vertical da história, com botão de som */
+.video-box{position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9/16;border-radius:6px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#000;}
+.video-box video{width:100%;height:100%;object-fit:cover;display:block;}
+.video-box .som{position:absolute;left:14px;bottom:14px;background:rgba(10,10,12,.72);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 16px;font:500 13px "Space Grotesk",sans-serif;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.rooftop p.idealizador{font-size:15px;color:var(--ink);}
+@media(max-width:760px){ .rt-grid .video-box{order:2;max-width:320px;} }
