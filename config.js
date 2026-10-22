@@ -48,6 +48,30 @@
         pix: 300, cartao: 316, unidade: "/ trimestre", sinal: 1,
         assinatura: { meses: 3 },  /* no cartão vira assinatura com renovação automática */
         barra: "R$ 100/mês · plano trimestral", botao: "Ser membro"
+      },
+      /* Conversas na Alpha House (página /conversa): o convidado conta a história dele,
+         mostra o trabalho e leva o vídeo. vagas: aparece no card ("restam X"). */
+      {
+        id: "participacao", nome: "Conversa · Participação", pagina: "/conversa/",
+        uso: "1 conversa de cerca de 30 minutos, gravação completa e 1 corte",
+        pix: 250, cartao: 263, unidade: "/ conversa", sinal: 1, vagas: 30,
+        nota: "Se a temporada não acontecer, devolvemos 100%",
+        apos: "Chama a gente no WhatsApp para marcar a data da sua conversa.",
+        barra: "Sua conversa por {preco}", botao: "Quero participar"
+      },
+      {
+        id: "marca", nome: "Conversa · Marca parceira", pagina: "/conversa/",
+        uso: "1 conversa, sua marca no telão em todos os episódios e 3 cortes",
+        pix: 990, cartao: 1042, unidade: "/ temporada", sinal: 1, vagas: 5,
+        nota: "Se a temporada não acontecer, devolvemos 100%",
+        apos: "Chama a gente no WhatsApp para marcar a data da sua conversa."
+      },
+      {
+        id: "master", nome: "Conversa · Patrocínio master", pagina: "/conversa/",
+        uso: "Temporada apresentada pela sua marca, 2 conversas e 6 cortes",
+        pix: 2900, cartao: 3052, unidade: "/ temporada", sinal: 1, vagas: 2,
+        nota: "Exclusividade na sua categoria · 100% de volta se a temporada não acontecer",
+        apos: "Chama a gente no WhatsApp para alinhar a sua marca na temporada."
       }
     ],
 
