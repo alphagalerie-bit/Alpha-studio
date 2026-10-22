@@ -37,7 +37,7 @@
       <img class="mono-logo" src="../assets/logo/alpha-house-simbolo-dourado.svg" alt="" width="42" height="42">
       <span class="brand-name">Alpha House<small>Comunidade · Perdizes</small></span>
     </a>
-    <a class="btn btn-gold nav-cta" href="#fazer-parte">Garantir vaga</a>
+    <a class="btn btn-gold nav-cta" href="#fazer-parte">Ver planos</a>
   </div>
 </nav>
 
@@ -212,8 +212,8 @@
 <section class="band pacotes" id="fazer-parte">
   <div class="wrap">
     <div class="band-head">
-      <p class="eyebrow reveal">Membros fundadores</p>
-      <h2 class="reveal">Escolha como você entra na comunidade.</h2>
+      <p class="eyebrow reveal">Faça parte</p>
+      <h2 class="reveal">Escolha como você entra na Alpha House.</h2>
       <p class="lead reveal">Os primeiros membros constroem a Alpha House com a gente. A adesão é única, e se a casa não inaugurar, você recebe 100% de volta.</p>
       <span class="urgencia reveal">Poucas vagas · não fica de fora dessa</span>
       <div class="meta-box reveal" data-meta hidden style="margin-left:0"></div>
@@ -222,11 +222,28 @@
       <button type="button" class="on" data-pay="pix" aria-pressed="true">Pix</button>
       <button type="button" data-pay="cartao" aria-pressed="false">Cartão</button>
     </div>
-    <div class="pac-grid">
-      <div class="pac feat reveal">
-        <span class="flag">Para quem cria</span>
+    <p class="pac-dica reveal">Toque em um plano para comparar.</p>
+    <div class="pac-grid quatro" data-planos>
+      <div class="pac reveal" tabindex="0">
+        <span class="flag">Para curtir o espaço</span>
+        <h3>Sócio do Clube</h3>
+        <p class="use">Para quem quer frequentar a casa, encontrar os amigos e aproveitar o espaço.</p>
+        <div class="price">R$ 100 <small>/ mês</small></div>
+        <div class="dur">Plano trimestral · renovação automática no cartão</div>
+        <ul>
+          <li><span class="ck">+</span>Acesso ao espaço com agendamento</li>
+          <li><span class="ck">+</span>Um acompanhante em toda visita</li>
+          <li><span class="ck">+</span>Painel de LED, som Pioneer 5.1, vista e ambiente climatizado</li>
+          <li><span class="ck">+</span>Bebidas e produtos do showroom à parte</li>
+          <li class="nao"><span class="ck">−</span>Não inclui a comunidade, os encontros de network nem a Live Alpha</li>
+          <li class="nao"><span class="ck">−</span>Em eventos fechados e gravações, o espaço fica reservado</li>
+        </ul>
+        <button class="btn btn-gold" data-reserve data-oferta-id="club">Quero ser sócio</button>
+      </div>
+      <div class="pac feat reveal" tabindex="0">
+        <span class="flag">Para quem empreende</span>
         <h3>Membro fundador</h3>
-        <p class="use">Artistas, marcas autorais e microempreendedores.</p>
+        <p class="use">Microempreendedores, lojas, prestadores de serviço e artistas que querem divulgar o seu trabalho.</p>
         <span class="vagas" data-vagas-de="membro"></span>
         <div class="price"><span data-preco-de="membro">R$ 250</span> <small>adesão única</small></div>
         <div class="dur">Você faz parte desde o começo</div>
@@ -241,7 +258,8 @@
         </ul>
         <button class="btn btn-gold" data-reserve data-oferta-id="membro">Quero fazer parte</button>
       </div>
-      <div class="pac reveal">
+      <div class="pac reveal" tabindex="0">
+        <span class="flag">Para marcas</span>
         <h3>Marca apoiadora</h3>
         <p class="use">Para marcas que querem estar perto de quem cria.</p>
         <span class="vagas" data-vagas-de="marca"></span>
@@ -249,14 +267,15 @@
         <div class="dur">Presente em tudo o que a comunidade faz</div>
         <ul>
           <li><span class="ck">+</span>Tudo do membro fundador</li>
-          <li><span class="ck">+</span>Sua marca no telão nos encontros e na Live Alpha</li>
+          <li><span class="ck">+</span>Sua marca no painel de LED nos encontros e na Live Alpha</li>
           <li><span class="ck">+</span>Menção nas lives divulgadas no YouTube e nas redes</li>
           <li><span class="ck">+</span>Produtos da marca na vitrine da casa</li>
           <li><span class="ck">+</span>3 cortes de vídeo com a sua marca</li>
         </ul>
         <button class="btn btn-gold" data-reserve data-oferta-id="marca">Quero apoiar</button>
       </div>
-      <div class="pac reveal">
+      <div class="pac reveal" tabindex="0">
+        <span class="flag">Exclusivo</span>
         <h3>Apoiador master</h3>
         <p class="use">A marca que apresenta a Live Alpha.</p>
         <span class="vagas" data-vagas-de="master"></span>
@@ -265,7 +284,7 @@
         <ul>
           <li><span class="ck">+</span>Tudo da marca apoiadora</li>
           <li><span class="ck">+</span>"Live Alpha apresentada por" a sua marca, em todas as lives</li>
-          <li><span class="ck">+</span>Logo em destaque no telão e nos encontros</li>
+          <li><span class="ck">+</span>Logo em destaque no painel de LED e nos encontros</li>
           <li><span class="ck">+</span>2 participações na Live Alpha e 6 cortes de vídeo</li>
           <li><span class="ck">+</span>Nenhuma marca concorrente apoiando a comunidade</li>
         </ul>
@@ -334,7 +353,7 @@
     <div class="field"><label for="fWpp">Seu WhatsApp</label><input id="fWpp" type="tel" placeholder="(11) 9...." autocomplete="tel"></div>
     <div class="field"><label for="fData">O que você faz (e seu Instagram)</label><input id="fData" type="text" data-rotulo="Meu trabalho" placeholder="Ex: pinto quadros · @meuatelie"></div>
     <div class="field"><label for="fEmail" id="fEmailLbl">Seu e-mail</label><input id="fEmail" type="email" placeholder="voce@email.com" autocomplete="email"></div>
-    <div class="total-row"><span class="tl">Adesão</span><span class="tv" id="total">R$ 0</span></div>
+    <div class="total-row"><span class="tl" id="totalLbl">Adesão</span><span class="tv" id="total">R$ 0</span></div>
     <div class="sub-row" id="subTotal"></div>
     <button class="btn btn-gold btn-block" id="pagar">Pagar no Mercado Pago</button>
     <button class="btn btn-ghost btn-block" id="send" style="margin-top:10px">Prefiro falar pelo WhatsApp</button>

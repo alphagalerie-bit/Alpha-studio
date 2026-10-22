@@ -198,6 +198,7 @@
     markSel("data-show-opt", state.show);
     markSel("data-pay-opt", state.pay);
     if ($("total")) $("total").textContent = BRL(preco());
+    if ($("totalLbl")) $("totalLbl").textContent = OFERTA.assinatura ? "Trimestre" : "Adesão";
     if ($("subTotal")) {
       var sub = "";
       if (OFERTA.sinal < 1) sub = "Agora no Mercado Pago: " + BRL(sinal()) + " · saldo até 7 dias antes";
@@ -372,6 +373,15 @@
       b.textContent = v.muted ? "Ativar som" : "Desativar som";
       b.setAttribute("aria-pressed", v.muted ? "false" : "true");
     });
+  });
+
+  /* ====== PLANOS: o card tocado (ou com foco) fica em destaque ====== */
+  document.querySelectorAll("[data-planos]").forEach(function (grid) {
+    var marca = function (card) {
+      grid.querySelectorAll(".pac").forEach(function (c) { c.classList.toggle("feat", c === card); });
+    };
+    grid.addEventListener("click", function (e) { var c = e.target.closest(".pac"); if (c) marca(c); });
+    grid.addEventListener("focusin", function (e) { var c = e.target.closest(".pac"); if (c) marca(c); });
   });
 
   /* ====== FAQ ====== */

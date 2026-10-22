@@ -493,3 +493,20 @@ a.perk:hover{border-color:var(--gold);transform:translateY(-2px);}
 .para-quem .dores{grid-template-columns:1fr;margin-top:16px;}
 .dores.sim li::before{content:"✓";color:#7FD1A8;}
 @media(max-width:760px){ .para-quem{grid-template-columns:1fr;} }
+
+/* Planos: quatro cards, todos com etiqueta; o escolhido fica dourado */
+.pac-grid.quatro{grid-template-columns:repeat(4,1fr);gap:18px;}
+.pac-grid.quatro .pac{padding:34px 22px 26px;cursor:pointer;}
+.pac-grid.quatro .pac h3{font-size:24px;}
+.pac-grid.quatro .pac .price{font-size:40px;}
+.pac:not(.feat) .flag{background:var(--panel-2);color:var(--gold);border:1px solid var(--gold-deep);}
+.pac:hover{border-color:var(--gold-deep);transform:translateY(-3px);}
+.pac.feat:hover{border-color:var(--gold);}
+.pac:focus{outline:none;}
+.pac:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.pac li.nao{color:var(--muted);}
+.pac li.nao .ck{color:#C9786F;}
+.pac-dica{margin-top:26px;font-size:13.5px;color:var(--muted);}
+@media(max-width:1180px){ .pac-grid.quatro{grid-template-columns:1fr 1fr;row-gap:30px;} }
+@media(max-width:640px){ .pac-grid.quatro{grid-template-columns:1fr;} }
+.pac-grid.quatro .price small{display:block;margin:10px 0 0;}
