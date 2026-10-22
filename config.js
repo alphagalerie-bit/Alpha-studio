@@ -8,10 +8,12 @@
     NOME: "Alpha House",            /* nome do espaço: aparece no Mercado Pago e no WhatsApp */
     DESCRITOR: "ALPHAHOUSE",        /* nome na fatura do cartão (até 13 letras, sem acento) */
     WPP: "5511942920076",           /* WhatsApp da Alpha Galerie */
-    /* Inauguração (ano-mês-dia e hora, ex: "2026-11-07T19:00"). Com a data, a faixa do topo
-       mostra a contagem regressiva sem escrever a data; depois dela, a faixa some.
-       Vazio = faixa de pré-venda sem contagem. */
-    INAUGURACAO: "",
+    /* Fim da pré-venda de fundadores (ano-mês-dia, hora e fuso). Liga a contagem regressiva
+       da faixa do topo e dos relógios grandes; depois dessa hora, os dois somem sozinhos.
+       Vazio = sem contagem. PRE_VENDA_ATE e INAUGURACAO_PREVISTA são os textos do site. */
+    PRE_VENDA_FIM: "2026-11-20T23:59:00-03:00",
+    PRE_VENDA_ATE: "20 de novembro",
+    INAUGURACAO_PREVISTA: "dezembro",
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
     /* Instagram (sem @). espaco: página inicial e esquenta. club: Club Alpha. idealizador: quem criou o projeto. */

@@ -519,3 +519,20 @@ a.perk:hover{border-color:var(--gold);transform:translateY(-2px);}
 .carta .assinatura{color:var(--ink);font-family:"Fraunces",serif;font-style:italic;font-size:19px;margin-top:26px;}
 .carta .assinatura b{font-style:normal;color:var(--gold-bright);font-weight:500;}
 @media(max-width:560px){ .carta{padding:32px 22px;} }
+
+/* Relógio da pré-venda */
+.relogio{max-width:560px;margin:30px auto 0;text-align:center;}
+.relogio-tit{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;}
+.relogio-num{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.relogio-num span{display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 6px;border:1px solid var(--gold-deep);border-radius:6px;background:var(--panel);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.relogio-num b{font-family:"Fraunces",serif;font-size:clamp(30px,6vw,42px);font-weight:500;color:var(--gold-bright);letter-spacing:0;line-height:1;font-variant-numeric:tabular-nums;}
+.relogio-sub{font-size:13.5px;color:var(--muted);margin:12px 0 0;}
+.band-head .relogio{text-align:left;}
+.band-head .relogio .relogio-sub{text-align:left;}
+
+/* Foto larga e selo de imagem ilustrativa */
+.foto-larga{margin:40px 0 0;border-radius:6px;overflow:hidden;border:1px solid var(--line);aspect-ratio:21/9;}
+.foto-larga img{width:100%;height:100%;object-fit:cover;object-position:center 62%;display:block;}
+@media(max-width:760px){ .foto-larga{aspect-ratio:4/3;} }
+.photo .ilustra{position:absolute;right:12px;bottom:12px;z-index:2;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.85);background:rgba(0,0,0,.45);padding:4px 9px;border-radius:999px;}
+.meta-top b.txt{font-family:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}

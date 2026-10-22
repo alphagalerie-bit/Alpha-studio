@@ -54,7 +54,7 @@
       var pct = Math.max(0, Math.min(100, d.pct | 0));
       metaEls.forEach(function (el) {
         el.innerHTML =
-          '<div class="meta-top"><span>Meta para abrir a casa</span><b>' + (pct ? pct + "%" : "Começando agora") + '</b></div>' +
+          '<div class="meta-top"><span>Meta para abrir a casa</span><b' + (pct ? '>' + pct + "%" : ' class="txt">Começando agora') + '</b></div>' +
           '<div class="meta-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"><i style="width:' + Math.max(pct, 2) + '%"></i></div>' +
           '<p class="meta-txt">' + (pct >= 100 ? "Meta batida! A Alpha House vai abrir. Ainda dá tempo de entrar como fundador."
             : pct ? "Quanto mais gente entra, mais perto a gente fica de abrir as portas. Não fica de fora."
@@ -64,19 +64,31 @@
     }).catch(function () {});
   }
 
-  /* Contagem para a inauguração na faixa de pré-venda; depois da data, a faixa some */
-  if (CFG.INAUGURACAO) {
-    var alvo = new Date(CFG.INAUGURACAO);
+  /* Contagem para o fim da pré-venda: na faixa do topo (<span data-contagem>) e nos relógios
+     grandes (<div data-relogio>). Depois da hora marcada, a faixa e os relógios somem. */
+  var FIM = CFG.PRE_VENDA_FIM ? new Date(CFG.PRE_VENDA_FIM) : null;
+  if (FIM && !isNaN(FIM)) {
+    var relogios = document.querySelectorAll("[data-relogio]");
     var conta = function () {
-      var ms = alvo - new Date();
-      if (isNaN(ms)) return;
-      if (ms <= 0) { document.querySelectorAll("[data-prazo]").forEach(function (el) { el.style.display = "none"; }); return; }
-      var d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+      var ms = FIM - new Date();
+      if (ms <= 0) {
+        document.querySelectorAll("[data-prazo],[data-relogio]").forEach(function (el) { el.style.display = "none"; });
+        return;
+      }
+      var d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60, s = Math.floor(ms / 1e3) % 60;
       document.querySelectorAll("[data-contagem]").forEach(function (el) {
-        el.innerHTML = ' · inaugura em <b>' + d + 'd ' + pad(h) + 'h ' + pad(m) + 'min</b>';
+        el.innerHTML = ' · termina em <b>' + d + 'd ' + pad(h) + 'h ' + pad(m) + 'min</b>';
+      });
+      relogios.forEach(function (el) {
+        el.innerHTML = '<p class="relogio-tit">A pré-venda de fundadores termina em</p><div class="relogio-num">' +
+          [[d, d === 1 ? "dia" : "dias"], [pad(h), "horas"], [pad(m), "min"], [pad(s), "seg"]].map(function (x) {
+            return '<span><b>' + x[0] + '</b>' + x[1] + '</span>';
+          }).join("") + '</div><p class="relogio-sub">Até ' + (CFG.PRE_VENDA_ATE || "o fim da pré-venda") +
+          ' ou enquanto houver vagas. Depois, as condições de fundador mudam.</p>';
+        el.hidden = false;
       });
     };
-    conta(); setInterval(conta, 30000);
+    conta(); setInterval(conta, relogios.length ? 1000 : 30000);
   }
 
   /* Botões que só levam ao Instagram: <a data-ig-link="espaco"> (mantém o texto do botão) */
