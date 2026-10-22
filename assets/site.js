@@ -328,6 +328,24 @@
       }).join("") + '</div></div>';
   }
 
+  /* ====== VÍDEO: toca sem som só enquanto aparece na tela; o botão liga o som ====== */
+  document.querySelectorAll("video[data-auto]").forEach(function (v) {
+    if (!("IntersectionObserver" in window)) { v.setAttribute("controls", ""); return; }
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { v.setAttribute("controls", ""); }); }
+      else v.pause();
+    }, { threshold: 0.4 }).observe(v);
+  });
+  document.querySelectorAll("[data-som]").forEach(function (b) {
+    var v = b.parentNode.querySelector("video");
+    b.addEventListener("click", function () {
+      v.muted = !v.muted;
+      if (!v.muted) { v.currentTime = 0; v.play(); }
+      b.textContent = v.muted ? "Ativar som" : "Desativar som";
+      b.setAttribute("aria-pressed", v.muted ? "false" : "true");
+    });
+  });
+
   /* ====== FAQ ====== */
   document.querySelectorAll(".qa").forEach(function (qa) {
     qa.querySelector("button").addEventListener("click", function () {
