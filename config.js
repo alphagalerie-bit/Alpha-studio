@@ -54,31 +54,34 @@
         id: "club", nome: "Club Alpha", pagina: "/club/",
         uso: "Membro do Club Alpha · plano trimestral",
         pix: 300, cartao: 316, unidade: "/ trimestre", sinal: 1, vagas: 40,  /* sócios fundadores */
+        mensal: 100,               /* o site mostra o valor por mês; cobra pix/cartao a cada trimestre */
         assinatura: { meses: 3 },  /* no cartão vira assinatura com renovação automática */
         barra: "R$ 100/mês · plano trimestral", botao: "Ser membro"
       },
       /* Comunidade Alpha House (página /comunidade): quem entra conta a sua história na Live Alpha,
-         expõe o trabalho e faz parte dos encontros. vagas: aparece no card. */
+         expõe o trabalho e faz parte dos encontros. vagas: aparece no card.
+         Todos os planos são mensais, cobrados por trimestre (pix/cartao = 3 meses), com
+         renovação automática no cartão, como o Club. */
       {
         id: "membro", nome: "Membro fundador da comunidade", pagina: "/comunidade/",
-        uso: "Adesão única de membro fundador da comunidade Alpha House",
-        pix: 250, cartao: 263, unidade: "/ adesão", sinal: 1, vagas: 30,
-        nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
+        uso: "Membro fundador da comunidade Alpha House · plano trimestral",
+        pix: 750, cartao: 790, unidade: "/ trimestre", sinal: 1, vagas: 50,
+        mensal: 250, assinatura: { meses: 3 },
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama no WhatsApp para a gente te receber.",
-        barra: "Membro fundador · {preco}", botao: "Quero fazer parte"
+        barra: "Membro fundador · R$ 250/mês", botao: "Quero fazer parte"
       },
       {
         id: "marca", nome: "Marca apoiadora", pagina: "/comunidade/",
         uso: "Sua marca perto de quem cria, presente nos encontros e na Live Alpha",
-        pix: 990, cartao: 1042, unidade: "/ adesão", sinal: 1, vagas: 5,
-        nota: "Adesão única · se a Alpha House não inaugurar, devolvemos 100%",
+        pix: 2970, cartao: 3129, unidade: "/ trimestre", sinal: 1, vagas: 10,
+        mensal: 990, assinatura: { meses: 3 },
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       },
       {
         id: "master", nome: "Apoiador master", pagina: "/comunidade/",
         uso: "A marca que apresenta a Live Alpha, com exclusividade na sua categoria",
-        pix: 2900, cartao: 3052, unidade: "/ adesão", sinal: 1, vagas: 2,
-        nota: "Exclusividade na sua categoria · 100% de volta se a Alpha House não inaugurar",
+        pix: 8700, cartao: 9164, unidade: "/ trimestre", sinal: 1, vagas: 2,
+        mensal: 2900, assinatura: { meses: 3 },
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       }
     ],

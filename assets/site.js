@@ -218,9 +218,8 @@
     if ($("subTotal")) {
       var sub = "";
       if (OFERTA.sinal < 1) sub = "Agora no Mercado Pago: " + BRL(sinal()) + " · saldo até 7 dias antes";
-      else if (OFERTA.assinatura) sub = state.pay === "cartao"
-        ? "R$ 100 por mês · renova sozinho a cada 3 meses"
-        : "R$ 100 por mês · renovação pelo Pix a cada 3 meses";
+      else if (OFERTA.assinatura) sub = BRL(OFERTA.mensal || Math.round(OFERTA.pix / OFERTA.assinatura.meses)) + " por mês · " +
+        (state.pay === "cartao" ? "renova sozinho a cada 3 meses" : "renovação pelo Pix a cada 3 meses");
       else sub = OFERTA.nota || "";
       $("subTotal").textContent = sub;
     }
@@ -300,14 +299,14 @@
       var s = showAtual();
       L.push("Show: " + s.artista + " (" + s.dia + (s.horario ? ", " + s.horario : "") + ")");
     }
-    if (OFERTA.assinatura) L.push("Plano: trimestral, R$ 100 por mês");
+    if (OFERTA.assinatura) L.push("Plano: trimestral, " + BRL(OFERTA.mensal || Math.round(OFERTA.pix / OFERTA.assinatura.meses)) + " por mês");
     L.push("Nome: " + f.nome);
     if (f.wpp) L.push("Meu WhatsApp: " + f.wpp);
     if (f.data) L.push(($("fData").getAttribute("data-rotulo") || "Quando quero usar") + ": " + f.data);
     if (f.insta) L.push("Instagram: " + f.insta);
     L.push("Pagamento: " + PAY_NOME[state.pay]);
     L.push("Valor: " + BRL(preco()) + (OFERTA.sinal < 1 ? " (sinal de " + BRL(sinal()) + ")" : ""));
-    L.push("", "Pode confirmar e me mandar o Pix?");
+    L.push("", state.pay === "pix" ? "Pode confirmar e me mandar o Pix?" : "Pode confirmar e me mandar o link de pagamento?");
     track("Contact");
     window.open("https://wa.me/" + WPP + "?text=" + encodeURIComponent(L.join("\n")), "_blank");
   }
@@ -348,7 +347,7 @@
     var oque = OFERTA.nome + (s ? " · " + s.artista + " (" + s.dia + ")" : "");
     var txt = {
       aprovado:   ["Pagamento aprovado!", OFERTA.apos || "Chama a gente no WhatsApp para receber o endereço e as regras da portaria."],
-      assinatura: ["Assinatura criada!", "Bem-vindo ao Club Alpha. Chama a gente no WhatsApp para agendar sua primeira visita."],
+      assinatura: ["Assinatura criada!", OFERTA.apos || "Bem-vindo ao Club Alpha. Chama a gente no WhatsApp para agendar sua primeira visita."],
       pendente:   ["Pagamento em análise.", "Assim que o Mercado Pago aprovar, a gente confirma no WhatsApp."],
       falhou:     ["O pagamento não foi concluído.", "Você pode tentar de novo ou fechar com a gente pelo WhatsApp."]
     }[st];
