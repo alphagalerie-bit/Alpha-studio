@@ -539,3 +539,5 @@ a.perk:hover{border-color:var(--gold);transform:translateY(-2px);}
 .meta-dentro{margin:10px 0 0;font-size:14.5px;color:var(--ink);}
 .meta-dentro b{color:var(--gold-bright);font-weight:600;}
 .indicar{margin-top:20px;font-size:14.5px;color:var(--muted);}
+.hero-nota{margin-top:20px;font-size:14.5px;color:var(--muted);}
+.hero-nota b{color:var(--gold-bright);font-weight:600;}
