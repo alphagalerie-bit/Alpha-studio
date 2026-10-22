@@ -61,6 +61,7 @@ module.exports = async function handler(req, res) {
   const email = limpa(b.email, 120);
   const wpp = limpa(b.wpp, 30);
   const quando = limpa(b.data, 120);
+  const insta = limpa(b.insta, 60);
   if (!nome) return res.status(400).json({ erro: "nome obrigatório" });
 
   let titulo = CONFIG.NOME + " · " + oferta.nome;
@@ -79,7 +80,7 @@ module.exports = async function handler(req, res) {
   const volta = base + (oferta.pagina || "/") + "?pagamento={st}&oferta=" + oferta.id + (show ? "&show=" + show.id : "");
   const metadata = {
     origem: "alpha-studio-site", oferta: oferta.id, show: show ? show.id : "",
-    forma: pay, nome, whatsapp: wpp, quando, total
+    forma: pay, nome, whatsapp: wpp, quando, instagram: insta, total
   };
 
   try {
