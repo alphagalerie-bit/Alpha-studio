@@ -60,7 +60,7 @@
           '<div class="meta-top"><span>Meta para abrir a casa</span><b' + (pct ? '>' + pct + "%" : ' class="txt">Começando agora') + '</b></div>' +
           (dentro >= minimo ? '<p class="meta-dentro"><b>' + dentro + ' fundadores</b> já fazem parte</p>' : '') +
           '<div class="meta-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"><i style="width:' + Math.max(pct, 2) + '%"></i></div>' +
-          '<p class="meta-txt">' + (pct >= 100 ? "Meta batida! A Alpha House vai abrir. Ainda dá tempo de entrar como fundador."
+          '<p class="meta-txt">' + (pct >= 100 ? "Meta batida! A Alpha House vai abrir. Acompanhe a montagem no Instagram e ainda entre como fundador."
             : pct ? "Quanto mais gente entra, mais perto a gente fica de abrir as portas. Não fica de fora."
             : "Os primeiros fundadores estão entrando agora. Seja um deles.") + '</p>';
         el.hidden = false;
@@ -88,7 +88,7 @@
           [[d, d === 1 ? "dia" : "dias"], [pad(h), "horas"], [pad(m), "min"], [pad(s), "seg"]].map(function (x) {
             return '<span><b>' + x[0] + '</b>' + x[1] + '</span>';
           }).join("") + '</div><p class="relogio-sub">Até ' + (CFG.PRE_VENDA_ATE || "o fim da pré-venda") +
-          ' ou enquanto houver vagas. Depois, as condições de fundador mudam.</p>';
+          ' ou enquanto houver vagas. Depois da pré-venda, os preços sobem.</p>';
         el.hidden = false;
       });
     };
