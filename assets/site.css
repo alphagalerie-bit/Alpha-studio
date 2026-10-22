@@ -486,3 +486,10 @@ a.perk:hover{border-color:var(--gold);transform:translateY(-2px);}
 .meta-barra i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));transition:width 1s ease;}
 .meta-txt{font-size:14.5px;color:var(--muted);margin:0;}
 .urgencia{display:inline-block;margin-top:14px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#E8A27C;}
+
+/* É para você / não é para você */
+.para-quem{display:grid;grid-template-columns:1fr 1fr;gap:20px 48px;margin-top:40px;}
+.para-quem h3{font-size:22px;}
+.para-quem .dores{grid-template-columns:1fr;margin-top:16px;}
+.dores.sim li::before{content:"✓";color:#7FD1A8;}
+@media(max-width:760px){ .para-quem{grid-template-columns:1fr;} }
