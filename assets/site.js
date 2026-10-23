@@ -368,7 +368,7 @@
   if (marcas && comLogo.length) {
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
     marcas.innerHTML =
-      '<div class="wrap"><p class="eyebrow">Patrocínio</p>' +
+      '<div class="wrap">' +
       '<h2 id="marcas-titulo">As marcas que estão <em>com a gente</em>.</h2>' +
       '<div class="marcas-row">' + comLogo.map(function (m) {
         return '<div class="marca"><img src="' + esc(ROOT + m.logo) + '" alt="' + esc(m.nome) + '" loading="lazy" decoding="async"></div>';
