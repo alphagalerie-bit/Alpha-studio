@@ -484,3 +484,8 @@ body{background:var(--parede);color:var(--tinta);}
 @media(prefers-reduced-motion:reduce){ .logo-anim .logo-a,.led-trilho,.v4 i{animation:none;} .logo-txt i{animation:none;opacity:1;transform:none;filter:none;} }
 @media(max-width:900px){ .parede .obra:nth-child(3){grid-column:1 / -1;max-width:62%;justify-self:center;} }
 .cta-bar .cta-txt b{white-space:nowrap;}
+/* verbos: cores puras e chapadas, sem brilho (roxo, vermelho, azul, laranja) */
+.verbos .v1{color:#9333FF;}
+.verbos .v2{color:#FF1A1A;}
+.verbos .v3{color:#0A84FF;}
+.v4 i{color:#FF7A00;animation:none;text-shadow:none;}
