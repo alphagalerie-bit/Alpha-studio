@@ -316,7 +316,10 @@
     L.push("Valor: " + BRL(preco()) + (OFERTA.sinal < 1 ? " (sinal de " + BRL(sinal()) + ")" : ""));
     L.push("", state.pay === "pix" ? "Pode confirmar e me mandar o Pix?" : "Pode confirmar e me mandar o link de pagamento?");
     track("Contact");
-    window.open("https://wa.me/" + WPP + "?text=" + encodeURIComponent(L.join("\n")), "_blank");
+    var url = "https://wa.me/" + WPP + "?text=" + encodeURIComponent(L.join("\n"));
+    /* Depois de esperar o servidor, o celular pode bloquear a aba nova: aí abre na mesma aba */
+    var aba = window.open(url, "_blank");
+    if (!aba) window.location.href = url;
   }
   if ($("send")) $("send").addEventListener("click", abrirWhatsApp);
 
@@ -334,14 +337,17 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ oferta: OFERTA.id, show: state.show, pay: state.pay,
         nome: f.nome, email: f.email, wpp: f.wpp, data: f.data, insta: f.insta })
-    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+    }).then(function (r) { return r.json().then(function (d) { return { ok: r.ok, status: r.status, d: d }; }); })
       .then(function (x) {
         if (x.ok && x.d.url) { window.location.href = x.d.url; return; }
-        throw new Error(x.d && x.d.erro);
+        var e = new Error(x.d && x.d.erro);
+        e.semMP = x.status === 503;  /* Mercado Pago ainda não configurado na Vercel */
+        throw e;
       })
-      .catch(function () {
+      .catch(function (e) {
         btn.disabled = false; btn.textContent = "Pagar no Mercado Pago";
-        alert("Não conseguimos abrir o Mercado Pago agora. Vamos fechar pelo WhatsApp.");
+        /* Sem Mercado Pago configurado, o pedido segue direto para o WhatsApp, sem mensagem de erro */
+        if (!(e && e.semMP)) alert("Não conseguimos abrir o Mercado Pago agora. Vamos fechar pelo WhatsApp.");
         abrirWhatsApp();
       });
   });
