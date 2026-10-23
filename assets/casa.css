@@ -419,3 +419,7 @@ body{background:var(--parede);color:var(--tinta);}
 .cta-bar{background:rgba(7,8,13,.94);border-top-color:var(--linha);}
 .paid{background:linear-gradient(90deg,#2B2DB8,#4F52FF);}
 .faz .etiqueta{color:#07080D;background:rgba(242,240,234,.92);z-index:2;}
+/* verbos: menores e cada um com a sua cor (LED, violeta, âmbar, brilho) */
+.verbos{font-size:clamp(50px,6.8vw,98px);line-height:.92;}
+.verbos .v1{color:#7C80FF;} .verbos .v2{color:#B59CFF;} .verbos .v3{color:var(--ambar);}
+.lead .dobro{display:block;margin-top:14px;color:var(--ambar);font-weight:600;}
