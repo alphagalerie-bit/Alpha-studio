@@ -431,3 +431,56 @@ body{background:var(--parede);color:var(--tinta);}
 .provas .ao-vivo-prova{border-color:var(--ambar);color:var(--ambar);}
 .provas .ao-vivo-prova::before{content:"●";margin-right:6px;animation:pisca 1.6s ease-in-out infinite;}
 @keyframes pisca{50%{opacity:.25;}}
+
+/* ===== ajustes out/2026: fontes menores, cores com contraste, painel de LED, logo animado ===== */
+.titulo{font-size:clamp(34px,4.8vw,68px);}
+.verbos{font-size:clamp(44px,5.4vw,80px);line-height:.95;}
+.faz h3{font-size:clamp(36px,4vw,58px);}
+.final h2{font-size:clamp(42px,6.2vw,96px);}
+.passo .n{font-size:52px;}
+.dor-lista li{font-size:clamp(18px,1.8vw,22px);}
+.manifesto{font-size:clamp(26px,3.4vw,48px);}
+
+/* verbos: quatro cores que contrastam entre si (neon da noite) */
+.verbos .v1{color:#5B6BFF;}          /* azul LED */
+.verbos .v2{color:#FF4D6D;}          /* vermelho neon */
+.verbos .v3{color:#2ED3B7;}          /* verde-água */
+.v4 i{background:none;-webkit-background-clip:initial;background-clip:initial;color:#FFB547;animation:neon 3.2s ease-in-out infinite;}
+@keyframes neon{0%,100%{text-shadow:0 0 0 rgba(255,181,71,0);}50%{text-shadow:0 0 18px rgba(255,181,71,.55);}}
+.faz.tomate::after{background:#FF4D6D;} .faz.tomate .num{color:#FF4D6D;}
+.faz.verde::after{background:#2ED3B7;} .faz.verde .num{color:#2ED3B7;}
+.faz.amarelo::after{background:#FFB547;} .faz.amarelo .num{color:#FFB547;}
+.faz.azul::after{background:#5B6BFF;} .faz.azul .num{color:#8E99FF;}
+
+/* galeria: três obras na parede */
+.parede{grid-template-columns:1.1fr .85fr .95fr;}
+@media(max-width:900px){ .parede{grid-template-columns:1fr 1fr;} }
+
+/* painel de LED 75 x 75 com as marcas dos membros passando */
+.painel-led{margin-top:24px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;border:1px solid var(--linha);
+  border-radius:4px;padding:28px;background:#07080C;}
+.led-tela{width:220px;aspect-ratio:1/1;background:#000;border:6px solid #1a1a1f;position:relative;overflow:hidden;
+  box-shadow:0 0 40px -6px rgba(255,181,71,.35);
+  background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1.3px);background-size:6px 6px;}
+.led-trilho{position:absolute;inset:0;display:flex;flex-direction:column;animation:ledroda 10s steps(1) infinite;}
+.led-trilho span{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;
+  font-family:var(--mono);font-size:19px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:#FFB547;
+  text-shadow:0 0 6px rgba(255,181,71,.9),0 0 18px rgba(255,140,40,.5);}
+@keyframes ledroda{0%{transform:translateY(0);}20%{transform:translateY(-100%);}40%{transform:translateY(-200%);}60%{transform:translateY(-300%);}80%{transform:translateY(-400%);}100%{transform:translateY(0);}}
+.led-txt p{font-size:19px;font-weight:600;letter-spacing:-.01em;max-width:40ch;}
+.led-txt .mono{color:var(--cinza);font-size:12px;font-weight:500;margin-bottom:10px;}
+@media(max-width:640px){ .painel-led{grid-template-columns:1fr;} .led-tela{width:100%;max-width:260px;} }
+
+/* logo animado: letras formando o nome e o "A" com brilho de LED suave */
+.logo-anim{display:inline-flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-anim .logo-a{height:30px;width:auto;animation:ledlogo 3.6s ease-in-out infinite;}
+@keyframes ledlogo{0%,100%{filter:drop-shadow(0 0 0 rgba(120,130,255,0));opacity:.92;}
+  50%{filter:drop-shadow(0 0 6px rgba(120,130,255,.9)) drop-shadow(0 0 14px rgba(91,107,255,.5));opacity:1;}}
+.logo-txt{font-family:"Cinzel",Georgia,serif;font-weight:500;font-size:19px;letter-spacing:.16em;color:var(--tinta);white-space:nowrap;}
+.logo-txt i{font-style:normal;display:inline-block;opacity:0;transform:translateY(6px);filter:blur(4px);
+  animation:letra .6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i) * 70ms + .15s);}
+@keyframes letra{to{opacity:1;transform:none;filter:none;}}
+@media(max-width:560px){ .logo-txt{font-size:15px;letter-spacing:.12em;} .logo-anim .logo-a{height:24px;} }
+@media(prefers-reduced-motion:reduce){ .logo-anim .logo-a,.led-trilho,.v4 i{animation:none;} .logo-txt i{animation:none;opacity:1;transform:none;filter:none;} }
+@media(max-width:900px){ .parede .obra:nth-child(3){grid-column:1 / -1;max-width:62%;justify-self:center;} }
+.cta-bar .cta-txt b{white-space:nowrap;}
