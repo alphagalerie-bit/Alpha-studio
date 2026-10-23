@@ -423,3 +423,11 @@ body{background:var(--parede);color:var(--tinta);}
 .verbos{font-size:clamp(50px,6.8vw,98px);line-height:.92;}
 .verbos .v1{color:#7C80FF;} .verbos .v2{color:#B59CFF;} .verbos .v3{color:var(--ambar);}
 .lead .dobro{display:block;margin-top:14px;color:var(--ambar);font-weight:600;}
+/* planos: o principal primeiro no celular, linha comum a todos, prova social */
+@media(max-width:640px){ .pac-grid .pac:nth-child(2){order:-1;} }
+.todos{margin-top:22px;font-size:16px;color:var(--cinza);}
+.todos b{color:var(--tinta);font-weight:600;}
+.provas li[hidden]{display:none;}
+.provas .ao-vivo-prova{border-color:var(--ambar);color:var(--ambar);}
+.provas .ao-vivo-prova::before{content:"●";margin-right:6px;animation:pisca 1.6s ease-in-out infinite;}
+@keyframes pisca{50%{opacity:.25;}}

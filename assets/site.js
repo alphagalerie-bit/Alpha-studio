@@ -57,6 +57,10 @@
       var minimo = (CFG.META && CFG.META.mostrarFundadoresDe) || 3;
       /* Até 100%: abrir a Alpha House. De 100% a 200%: meta dobrada, aberta até as 6h */
       var dobrada = pct >= 100, barra = dobrada ? pct - 100 : pct;
+      /* Prova social no topo: "N fundadores já entraram" */
+      document.querySelectorAll("[data-dentro-hero]").forEach(function (el) {
+        if (dentro >= minimo) { el.textContent = dentro + " fundadores já entraram"; el.hidden = false; }
+      });
       metaEls.forEach(function (el) {
         el.innerHTML =
           '<div class="meta-top"><span>' + (dobrada ? "Meta dobrada: aberta até as 6h" : "Meta para abrir a Alpha House") + '</span><b' +
