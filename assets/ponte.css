@@ -1,0 +1,80 @@
+/* =====================================================================
+   PONTE (out/2026): Club e Esquenta com a mesma identidade da home.
+   Bricolage Grotesque + IBM Plex Mono, paleta viva (violeta, rubi,
+   ciano e ouro) e botões arredondados. Carregado depois do site.css.
+   ===================================================================== */
+:root{
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --texto:"Bricolage Grotesque",system-ui,sans-serif;
+  --serifa:"Bricolage Grotesque",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --bg:#07080D; --bg-2:#0B0C12; --panel:#10121B; --panel-2:#151826;
+  --ink:#F2F0EA; --muted:#9C9AA6;
+  --gold:#FFB800; --gold-bright:#FFE14D;
+  --line:rgba(242,240,234,.14); --line-soft:rgba(242,240,234,.07);
+  --sinal:#FF2E63;
+  --vio:#B44BFF; --rubi:#FF2E63; --ciano:#2BE4FF; --ouro:#FFE14D; --ouro-2:#FFB800;
+}
+body{letter-spacing:0;}
+body::after{display:none;}
+
+/* títulos: mesma fonte da home, destaque em ouro no lugar do itálico */
+h1,h2,h3{font-stretch:100%;font-weight:800;letter-spacing:-.04em;line-height:.95;}
+h1 em,h2 em,h3 em,.hero h1 em,.marcas h2 em{font-family:var(--display);font-style:normal;font-weight:800;letter-spacing:-.04em;
+  background:linear-gradient(100deg,var(--ouro),var(--ouro-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero h1,.final h2{text-transform:none;}
+.hero h1{font-size:clamp(44px,7vw,100px);line-height:.92;max-width:14ch;letter-spacing:-.045em;}
+.hero h1 em{display:block;font-size:.62em;line-height:1;margin-top:.14em;}
+.band-head h2{font-size:clamp(34px,4.8vw,64px);}
+.final h2{font-size:clamp(42px,6.2vw,92px);}
+.perk h3{letter-spacing:-.03em;}
+.price-hero,.pac .price,.pac-grid.quatro .pac .price,.relogio-num b,.meta-top b,.fatos b,.cta-bar .cta-txt b{font-stretch:100%;font-weight:800;letter-spacing:-.03em;}
+
+/* rótulos em mono, como na home */
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;font-weight:500;color:var(--muted);}
+.band-head .eyebrow::before{font-family:var(--mono);color:var(--ouro-2);font-weight:500;}
+.perk .tag,.oferta-info .tag{font-family:var(--mono);font-weight:500;letter-spacing:.08em;color:var(--ciano);}
+.pac .flag,.pac .vagas,.show .falta{font-family:var(--mono);font-weight:500;}
+
+/* faixa do topo e menu iguais aos da home */
+.strip{background:linear-gradient(90deg,#2B2DB8,#4F52FF 50%,#6A44E0);color:#fff;font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;}
+.strip b{color:var(--ouro);font-weight:500;}
+.nav{background:rgba(7,8,13,.8);}
+.brand-name{font-family:"Cinzel",Georgia,serif;font-weight:500;letter-spacing:.16em;}
+
+/* botões arredondados */
+.btn{border-radius:999px;font-family:var(--texto);font-weight:600;font-size:15px;letter-spacing:0;text-transform:none;padding:16px 26px;}
+.btn-gold{background:var(--ink);color:#07080D;}
+.btn-gold:hover{background:var(--ouro-2);color:#07080D;}
+.btn-ghost{border-radius:999px;border:1px solid rgba(242,240,234,.4);}
+.btn-ghost:hover{background:var(--ink);color:#07080D;border-color:var(--ink);}
+.pay-toggle{border-radius:999px;overflow:hidden;}
+.pay-toggle button{border-radius:999px;}
+
+/* cores vivas nos detalhes */
+.dores li::before{color:var(--rubi);}
+.dores.sim li::before{color:var(--ciano);}
+.virada{font-family:var(--display);font-weight:600;letter-spacing:-.02em;}
+.step .n{font-stretch:100%;font-weight:800;letter-spacing:-.04em;}
+.steps .step:nth-child(1) .n{color:var(--vio);}
+.steps .step:nth-child(2) .n{color:var(--rubi);}
+.steps .step:nth-child(3) .n{color:var(--ciano);}
+.steps .step:nth-child(4) .n{color:var(--ouro-2);}
+.faixa-trilho span{font-stretch:100%;text-transform:none;letter-spacing:-.03em;}
+.faixa-trilho span:nth-child(even){color:var(--ouro-2);-webkit-text-stroke:0;}
+.faixa-trilho span::after{content:"✦";color:var(--vio);}
+.meta-barra i{background:linear-gradient(90deg,var(--vio),var(--rubi),var(--ouro-2));}
+
+/* cantos arredondados, como os cards da home */
+.pac{border-radius:18px;}
+.pac.feat{border-color:var(--vio);box-shadow:0 30px 70px -30px rgba(180,75,255,.45);}
+.pac .flag,.pac .vagas,.show .falta{border-radius:999px;}
+.show .falta{background:var(--rubi);}
+.photo,.foto-larga,.oferta-foto,.video-box,.galeria img{border-radius:14px;}
+.guarantee,.eventos,.meta-box,.show,.show:hover{border-radius:14px;}
+.relogio-num span{border-radius:12px;}
+.meta-barra,.meta-barra i{border-radius:999px;}
+
+/* a fonte nova não tem itálico: tudo em pé, sem inclinação falsa */
+html{font-synthesis:weight;}
+.virada,.carta .assinatura,.hero-foot .v,.step .n{font-style:normal;}

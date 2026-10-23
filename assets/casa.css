@@ -625,3 +625,6 @@ body{background:var(--parede);color:var(--tinta);}
 .lead .dobro{color:var(--ouro-2);}
 .guia > div{border:1px solid var(--linha);border-left:3px solid var(--g);border-radius:12px;}
 @media(max-width:640px){ .te-vejo{margin-left:0;width:100%;} }
+
+/* revisão de lançamento */
+@media(max-width:640px){ .rotulo{flex-wrap:wrap;gap:4px 12px;} }
