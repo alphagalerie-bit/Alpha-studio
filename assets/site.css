@@ -702,3 +702,98 @@ a.perk:hover{transform:none;border-color:var(--ink);}
 .pac .flag{white-space:nowrap;}
 .hero h1 em{display:block;font-size:.66em;line-height:1.02;margin-top:.08em;}
 .price-hero small{font-stretch:100%;font-weight:500;}
+
+/* =====================================================================
+   ESTRUTURA NOVA (out/2026): topo dividido com colagem, manifesto,
+   "o que você faz aqui" em mosaico, casos, um dia, comparação de planos.
+   ===================================================================== */
+.hero.hero-split{min-height:0;display:block;padding:72px 0 90px;background:var(--bg);}
+.hero-split .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+.hero-split h1{font-size:clamp(50px,7.4vw,108px);max-width:11ch;}
+.hero-split .hero-sub{color:var(--muted);}
+.hs-colagem{position:relative;aspect-ratio:4/5;}
+.hs-colagem figure{position:absolute;margin:0;overflow:hidden;border:1px solid var(--line);background:var(--panel);}
+.hs-colagem img{width:100%;height:100%;object-fit:cover;display:block;}
+.hs-colagem .c1{left:0;top:0;width:68%;height:64%;}
+.hs-colagem .c2{right:0;top:34%;width:58%;height:36%;z-index:2;}
+.hs-colagem .c3{left:10%;bottom:0;width:44%;height:33%;z-index:1;}
+.hs-colagem .c1 img{object-position:center 60%;} .hs-colagem .c3 img{object-position:center 40%;}
+.hs-colagem figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:#0E0D0B;font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;}
+@media(max-width:900px){
+  .hero-split .wrap{grid-template-columns:1fr;gap:44px;}
+  .hs-colagem{aspect-ratio:1/1;max-width:520px;}
+  .hero.hero-split{padding:48px 0 64px;}
+}
+
+/* manifesto: texto grande com mini fotos no meio da frase */
+.manifesto-band{padding:120px 0;}
+.manifesto{font-family:var(--serifa);font-size:clamp(30px,4.3vw,62px);line-height:1.1;letter-spacing:-.01em;color:var(--ink);max-width:24ch;margin-top:8px;}
+.manifesto em{color:var(--gold-bright);}
+.mini{display:inline-block;width:1.9em;height:.9em;border-radius:999px;background-size:cover;background-position:center;
+  vertical-align:-.06em;border:1px solid var(--line);}
+.manifesto-assina{margin-top:34px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+
+/* o que você faz aqui: mosaico */
+.usos{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(230px,auto);gap:14px;margin-top:48px;}
+.uso{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--panel);display:flex;align-items:flex-end;grid-column:span 2;}
+.uso>div{position:relative;z-index:1;padding:26px 26px 28px;}
+.uso .n{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--gold);}
+.uso h3{font-size:clamp(28px,2.8vw,40px);margin:10px 0 10px;text-transform:uppercase;}
+.uso p{color:var(--muted);font-size:15.5px;max-width:46ch;}
+.uso.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease;}
+.uso.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,13,11,0) 30%,rgba(14,13,11,.92) 100%);}
+.uso.foto p{color:rgba(242,237,228,.86);}
+.uso.foto:hover img{transform:scale(1.03);}
+.u-expor{grid-column:span 4;grid-row:span 2;}
+.u-gravar{grid-column:span 2;grid-row:span 2;}
+.u-expor img{object-position:center 45%;} .u-gravar img{object-position:center 60%;}
+@media(max-width:900px){
+  .usos{grid-template-columns:1fr;grid-auto-rows:auto;}
+  .uso,.u-expor,.u-gravar{grid-column:auto;grid-row:auto;min-height:220px;}
+  .uso.foto{min-height:380px;}
+}
+
+/* imagine você aqui dentro */
+.casos{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;margin-top:48px;}
+.caso{border-top:1px solid var(--line);padding-top:26px;}
+.caso-se{font-family:var(--serifa);font-size:clamp(24px,2.4vw,32px);line-height:1.15;color:var(--ink);margin-bottom:16px;}
+.caso p:not(.caso-se){color:var(--muted);font-size:15.5px;}
+@media(max-width:900px){ .casos{grid-template-columns:1fr;gap:34px;} }
+
+/* um dia na alpha house: linha do tempo que arrasta para o lado */
+.dia-trilho{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);margin-top:44px;overflow-x:auto;
+  scroll-snap-type:x mandatory;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:0 max(24px,calc((100vw - var(--maxw))/2 + 24px));scrollbar-width:none;}
+.dia-trilho::-webkit-scrollbar{display:none;}
+.dia-item{scroll-snap-align:start;padding:30px 28px 34px 0;border-right:1px solid var(--line-soft);margin-right:28px;}
+.dia-item:last-child{border-right:0;}
+.hora{display:block;font-family:var(--display);font-stretch:72%;font-weight:700;font-size:clamp(56px,6vw,84px);line-height:.9;color:var(--ink);}
+.dia-item p{margin-top:16px;color:var(--muted);font-size:16px;max-width:26ch;}
+@media(max-width:560px){ .dia-trilho{grid-auto-columns:78%;padding:0 16px;} }
+
+/* R$ 100 ou R$ 250 */
+.compara-intro{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;margin-top:40px;}
+.compara-intro>div{border-top:1px solid var(--line);padding-top:22px;}
+.compara-intro h3{font-size:30px;text-transform:uppercase;margin-bottom:10px;}
+.compara-intro p{color:var(--muted);font-size:16px;max-width:48ch;}
+.compara-tabela{margin-top:40px;overflow-x:auto;}
+.compara-tabela table{width:100%;border-collapse:collapse;min-width:520px;}
+.compara-tabela th,.compara-tabela td{padding:16px 14px;border-bottom:1px solid var(--line-soft);text-align:center;font-size:15.5px;}
+.compara-tabela th:first-child,.compara-tabela td:first-child{text-align:left;padding-left:0;color:var(--ink);}
+.compara-tabela thead th{font-family:var(--display);font-stretch:72%;font-weight:700;font-size:22px;text-transform:uppercase;
+  border-bottom:1px solid var(--line);vertical-align:bottom;}
+.compara-tabela thead th small{display:block;font-family:var(--texto);font-stretch:100%;font-size:12.5px;font-weight:500;
+  color:var(--gold);text-transform:none;letter-spacing:.02em;margin-top:6px;}
+.compara-tabela tbody td{color:var(--gold-bright);font-size:18px;}
+.compara-tabela tbody td:first-child{font-size:15.5px;}
+.compara-tabela tbody td:nth-child(2){color:var(--muted);}
+.compara-tabela tbody tr td:nth-child(2):not(:empty){}
+.compara-tabela th:last-child,.compara-tabela td:last-child{background:rgba(242,237,228,.03);}
+@media(max-width:760px){ .compara-intro{grid-template-columns:1fr;gap:26px;} }
+
+/* patrocínio logo depois dos planos, mais visível */
+.marcas{background:var(--bg-2);border-top:1px solid var(--line);padding:70px 0 74px;}
+.dia-trilho{padding:0;}
+.manifesto{max-width:28ch;}
+@media(max-width:560px){ .dia-trilho{grid-auto-columns:78%;margin-right:-16px;padding:0;} }
