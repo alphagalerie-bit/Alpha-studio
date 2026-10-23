@@ -291,3 +291,131 @@ p{margin:0;} a{color:inherit;} img{max-width:100%;display:block;}
 .pac .price{font-size:clamp(40px,3.5vw,52px);white-space:nowrap;}
 .menu .btn{white-space:nowrap;}
 @media(max-width:560px){ .menu .logo img{height:24px;} .menu .btn{padding:11px 15px;font-size:13.5px;} }
+
+/* =====================================================================
+   IDENTIDADE "A CASA À NOITE" (out/2026)
+   As cores saem do próprio espaço: o escuro da noite, o azul do LED e o
+   âmbar das velas e do pôr do sol. Animação suave: verbos entrando, luz
+   de LED se movendo, fotos com zoom ao aparecer.
+   ===================================================================== */
+:root{
+  --parede:#07080D; --parede-2:#10121B; --papel:#0D0F17;
+  --tinta:#F2F0EA; --cinza:#9C9AA6; --linha:rgba(242,240,234,.12); --linha-forte:rgba(242,240,234,.55);
+  --led:#4F52FF; --led-2:#7C5CFF; --ambar:#FFB24A; --ambar-2:#FF8A3D;
+  --azul:var(--led); --tomate:var(--ambar-2); --verde:var(--led-2); --amarelo:var(--ambar);
+}
+body{background:var(--parede);color:var(--tinta);}
+.aviso{background:linear-gradient(90deg,#2B2DB8,#4F52FF 50%,#6A44E0);color:#fff;}
+.aviso b{color:#FFD08A;}
+.menu{background:rgba(7,8,13,.78);border-bottom-color:var(--linha);}
+.menu nav a{color:var(--cinza);} .menu nav a:hover{color:var(--tinta);}
+.btn-gold,.btn-cheio{background:var(--tinta);color:#07080D;border-color:var(--tinta);}
+.btn-gold:hover,.btn-cheio:hover{background:var(--ambar);border-color:var(--ambar);color:#07080D;}
+.btn-ghost{color:var(--tinta);border-color:var(--linha-forte);}
+.btn-ghost:hover{background:var(--tinta);color:#07080D;}
+
+/* topo: luz de LED se movendo ao fundo + verbos entrando */
+.topo{position:relative;overflow:hidden;}
+.topo::before,.topo::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+.topo::before{width:620px;height:620px;background:rgba(79,82,255,.45);top:-180px;left:-160px;animation:led 16s ease-in-out infinite alternate;}
+.topo::after{width:520px;height:520px;background:rgba(255,160,70,.22);bottom:-220px;right:-120px;animation:led 20s ease-in-out infinite alternate-reverse;}
+.topo .wrap{position:relative;z-index:1;}
+@keyframes led{0%{transform:translate(0,0) scale(1);}50%{transform:translate(120px,60px) scale(1.15);}100%{transform:translate(40px,140px) scale(.95);}}
+.verbos span{color:var(--tinta);opacity:0;transform:translateY(.35em);animation:sobe 1s cubic-bezier(.2,.7,.2,1) forwards;}
+.verbos .v1{animation-delay:.05s;} .verbos .v2{animation-delay:.2s;} .verbos .v3{animation-delay:.35s;} .verbos .v4{animation-delay:.5s;}
+.v4 i{background:linear-gradient(90deg,var(--led),var(--led-2),var(--ambar),var(--led));background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;padding:0;animation:luz 8s linear infinite;}
+@keyframes sobe{to{opacity:1;transform:none;}}
+@keyframes luz{to{background-position:300% 0;}}
+.topo .lead{color:rgba(242,240,234,.86);}
+.provas li{border-color:var(--linha-forte);}
+.reel{box-shadow:0 0 0 1px var(--linha),0 40px 120px -30px rgba(79,82,255,.55);}
+.reel .ao-vivo{background:var(--ambar-2);}
+.placa b{color:var(--tinta);}
+@media(prefers-reduced-motion:reduce){ .topo::before,.topo::after,.v4 i{animation:none;} .verbos span{animation:none;opacity:1;transform:none;} }
+
+/* faixa com o público, em movimento */
+.faixa-publico{overflow:hidden;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);padding:20px 0;background:#05060A;}
+.faixa-trilho{display:flex;width:max-content;animation:faixa 50s linear infinite;}
+.faixa-trilho span{font-size:clamp(24px,3.2vw,40px);font-weight:700;letter-spacing:-.03em;padding:0 28px;white-space:nowrap;color:var(--tinta);}
+.faixa-trilho span:nth-child(even){color:transparent;-webkit-text-stroke:1px rgba(242,240,234,.45);}
+.faixa-trilho span::after{content:"✦";color:var(--ambar);-webkit-text-stroke:0;padding-left:56px;font-size:.6em;vertical-align:middle;}
+@keyframes faixa{to{transform:translateX(-50%);}}
+
+/* fotos com zoom ao aparecer */
+.reveal img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1);}
+.reveal.in img{transform:none;}
+
+/* dor */
+.dor-lista li{border-top-color:var(--linha);}
+.dor-lista li::before{color:var(--ambar);}
+
+/* quatro motivos: cartões escuros com a cor só no detalhe */
+.faz,.faz.azul,.faz.tomate,.faz.verde,.faz.amarelo{background:var(--papel);color:var(--tinta);border:1px solid var(--linha);}
+.faz::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;z-index:2;}
+.faz.azul::after{background:var(--led);} .faz.tomate::after{background:var(--ambar-2);} .faz.verde::after{background:var(--led-2);} .faz.amarelo::after{background:var(--ambar);}
+.faz.azul .num{color:#8E90FF;} .faz.tomate .num{color:var(--ambar-2);} .faz.verde .num{color:#B09BFF;} .faz.amarelo .num{color:var(--ambar);}
+.faz .num{opacity:1;}
+.faz p.desc{color:var(--cinza);opacity:1;}
+.faz figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,15,23,0) 55%,rgba(13,15,23,.9));}
+
+/* galeria: parede escura, luz de museu sobre cada obra, fotos reais */
+.galeria-sec{background:#05060A;}
+.parede{background:radial-gradient(ellipse 18% 55% at 16% 0%,rgba(255,214,150,.20),transparent 70%),
+  radial-gradient(ellipse 14% 50% at 42% 0%,rgba(255,214,150,.18),transparent 70%),
+  radial-gradient(ellipse 14% 50% at 64% 0%,rgba(255,214,150,.18),transparent 70%),
+  linear-gradient(180deg,#14161F 0%,#10121A 78%,#0A0B10 78%,#07080C 100%);border-color:var(--linha);}
+.moldura,.moldura.m1,.moldura.m2,.moldura.m3{background:#000;border-color:#1E1B16;padding:0;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.8);}
+.moldura img{width:100%;height:100%;object-fit:cover;}
+.etiqueta-museu{background:#F2F0EA;color:#07080D;}
+.etiqueta-museu span{color:#5d5a55;}
+.no-chao .bloco{background:linear-gradient(160deg,#2A2C3A,#16171F);color:var(--cinza);border:1px solid var(--linha);}
+.vidro{background:linear-gradient(135deg,rgba(120,140,200,.10),rgba(255,255,255,.03));border-color:var(--linha);backdrop-filter:blur(4px);}
+.vidro .cartao{background:#F2F0EA;color:#5d5a55;border:0;}
+
+/* passos e planos em cartões escuros */
+.passo{background:var(--papel);border-color:var(--linha);}
+.passo:nth-child(1) .n{color:var(--led);} .passo:nth-child(2) .n{color:var(--led-2);} .passo:nth-child(3) .n{color:var(--ambar);}
+.guia div{border-color:var(--led)!important;} .guia div:last-child{border-color:var(--ambar)!important;}
+.pay-toggle{border-color:var(--linha-forte);}
+.pay-toggle button{color:var(--tinta);} .pay-toggle button.on{background:var(--tinta);color:#07080D;}
+.pac{background:var(--papel);border-color:var(--linha);}
+.pac:hover{border-color:var(--linha-forte);}
+.pac.feat{background:linear-gradient(180deg,#161A3A,#0D0F17 55%);border-color:var(--led);box-shadow:0 30px 80px -40px rgba(79,82,255,.7);}
+.pac .flag,.pac:nth-child(n) .flag{background:rgba(242,240,234,.08);color:var(--tinta);}
+.pac.feat .flag{background:var(--led);color:#fff;}
+.pac .vagas{color:var(--ambar);}
+.pac .btn{background:transparent;color:var(--tinta);border-color:var(--linha-forte);}
+.pac .btn:hover,.pac.feat .btn{background:var(--tinta);color:#07080D;border-color:var(--tinta);}
+.pac.feat .btn:hover{background:var(--ambar);border-color:var(--ambar);}
+.garantia span::before{color:var(--ambar);}
+
+/* marcas, relógio, meta */
+.marcas{background:#05060A;color:var(--tinta);}
+.marcas h2 em{color:var(--ambar);}
+.relogio-num span,.meta-box{background:var(--papel);border-color:var(--linha);}
+.meta-barra{background:rgba(242,240,234,.08);}
+.meta-barra i{background:linear-gradient(90deg,var(--led),var(--led-2),var(--ambar));}
+.meta-top b.txt{color:var(--ambar);}
+.meta-dentro b{color:var(--ambar);}
+
+/* chamada final: o azul do LED */
+.final{background:radial-gradient(ellipse 70% 90% at 15% 10%,#3A3DE0 0%,rgba(58,61,224,0) 60%),
+  radial-gradient(ellipse 50% 70% at 95% 100%,rgba(255,150,60,.35),rgba(255,150,60,0) 60%),#07080D;}
+.final .btn-cheio{background:var(--tinta);color:#07080D;border-color:var(--tinta);}
+.final .btn-cheio:hover{background:var(--ambar);border-color:var(--ambar);}
+
+/* também na casa, dúvidas, rodapé */
+.tambem a{background:var(--papel);border-color:var(--linha);}
+.tambem a:hover{border-color:var(--linha-forte);}
+.rodape{background:#05060A;border-top:1px solid var(--linha);}
+
+/* modal e barra do celular no escuro */
+.sheet{background:#11131C;border:1px solid var(--linha);}
+.field input[type=text],.field input[type=tel],.field input[type=email]{background:#07080D;border-color:var(--linha);color:var(--tinta);}
+.field input:focus{border-color:var(--led);}
+.opt{background:#07080D;border-color:var(--linha);}
+.opt.sel{border-color:var(--led);background:rgba(79,82,255,.12);}
+.cta-bar{background:rgba(7,8,13,.94);border-top-color:var(--linha);}
+.paid{background:linear-gradient(90deg,#2B2DB8,#4F52FF);}
+.faz .etiqueta{color:#07080D;background:rgba(242,240,234,.92);z-index:2;}
