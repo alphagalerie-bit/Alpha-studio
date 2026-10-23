@@ -51,17 +51,21 @@
     fetch(ROOT + "api/meta").then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       if (!d) return;
       pintaVagas(d.vendidas);
-      var pct = Math.max(0, Math.min(100, d.pct | 0));
+      var pct = Math.max(0, Math.min(200, d.pct | 0));
       /* Quantos fundadores já entraram (todas as ofertas menos o esquenta), a partir de um mínimo */
       var dentro = Object.keys(d.vendidas || {}).reduce(function (t, k) { return k === "show" ? t : t + (d.vendidas[k] | 0); }, 0);
       var minimo = (CFG.META && CFG.META.mostrarFundadoresDe) || 3;
+      /* Até 100%: abrir a Alpha House. De 100% a 200%: meta dobrada, aberta até as 6h */
+      var dobrada = pct >= 100, barra = dobrada ? pct - 100 : pct;
       metaEls.forEach(function (el) {
         el.innerHTML =
-          '<div class="meta-top"><span>Meta para abrir a casa</span><b' + (pct ? '>' + pct + "%" : ' class="txt">Começando agora') + '</b></div>' +
+          '<div class="meta-top"><span>' + (dobrada ? "Meta dobrada: aberta até as 6h" : "Meta para abrir a Alpha House") + '</span><b' +
+          (barra ? '>' + barra + "%" : (dobrada ? '>0%' : ' class="txt">Começando agora')) + '</b></div>' +
           (dentro >= minimo ? '<p class="meta-dentro"><b>' + dentro + ' fundadores</b> já fazem parte</p>' : '') +
-          '<div class="meta-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"><i style="width:' + Math.max(pct, 2) + '%"></i></div>' +
-          '<p class="meta-txt">' + (pct >= 100 ? "Meta batida! A Alpha House vai abrir. Acompanhe a montagem no Instagram e ainda entre como fundador."
-            : pct ? "Quanto mais gente entra, mais perto a gente fica de abrir as portas. Não fica de fora."
+          '<div class="meta-barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + barra + '"><i style="width:' + Math.max(barra, 2) + '%"></i></div>' +
+          '<p class="meta-txt">' + (pct >= 200 ? "Meta dobrada! A Alpha House vai funcionar até as 6h da manhã."
+            : dobrada ? "A Alpha House vai abrir. Se a meta dobrar, ela fica aberta até as 6h da manhã."
+            : pct ? "Quanto mais gente entra, mais perto a Alpha House fica de abrir. E se a meta dobrar, ela fica aberta até as 6h."
             : "Os primeiros fundadores estão entrando agora. Seja um deles.") + '</p>';
         el.hidden = false;
       });
@@ -347,7 +351,7 @@
     var oque = OFERTA.nome + (s ? " · " + s.artista + " (" + s.dia + ")" : "");
     var txt = {
       aprovado:   ["Pagamento aprovado!", OFERTA.apos || "Chama a gente no WhatsApp para receber o endereço e as regras da portaria."],
-      assinatura: ["Assinatura criada!", OFERTA.apos || "Bem-vindo ao Club Alpha. Chama a gente no WhatsApp para agendar sua primeira visita."],
+      assinatura: ["Assinatura criada!", OFERTA.apos || "Bem-vindo ao Club Alpha. Chama a gente no WhatsApp para a gente te receber."],
       pendente:   ["Pagamento em análise.", "Assim que o Mercado Pago aprovar, a gente confirma no WhatsApp."],
       falhou:     ["O pagamento não foi concluído.", "Você pode tentar de novo ou fechar com a gente pelo WhatsApp."]
     }[st];

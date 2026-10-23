@@ -58,7 +58,7 @@ module.exports = async function handler(req, res) {
   }
 
   Object.keys(socios).forEach(k => { vendidas[k] = (vendidas[k] || 0) + socios[k].size; });
-  const pct = META.alvo ? Math.min(100, Math.floor(valor / META.alvo * 100)) : 0;
+  const pct = META.alvo ? Math.min(200, Math.floor(valor / META.alvo * 100)) : 0;  /* até 200%: a segunda metade é a meta dobrada */
   res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=900");
   return res.status(200).json({ pct, vendidas });
 };
