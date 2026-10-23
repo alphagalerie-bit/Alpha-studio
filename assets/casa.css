@@ -510,3 +510,47 @@ body{background:var(--parede);color:var(--tinta);}
 .origem .titulo{max-width:24ch;}
 .rota span{white-space:nowrap;}
 @media(max-width:640px){ .rota i{flex:1 1 40px;} }
+
+/* =====================================================================
+   ORIGEM: Alpha Galerie (Alphaville) → Alpha House (São Paulo)
+   Tela cheia com a cena real do telão ao fundo, frase de impacto, CTA.
+   ===================================================================== */
+.origem{position:relative;overflow:hidden;min-height:min(92vh,860px);display:flex;align-items:center;padding:120px 0;
+  border:0;background:#05060A;isolation:isolate;}
+.origem-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  filter:saturate(1.25) contrast(1.05) brightness(.62);transform:scale(1.08);animation:origemzoom 18s ease-in-out infinite alternate;}
+.origem::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(5,6,10,.96) 0%,rgba(5,6,10,.82) 42%,rgba(5,6,10,.35) 75%,rgba(5,6,10,.55) 100%),
+             linear-gradient(0deg,#07080D 0%,transparent 22%,transparent 78%,#07080D 100%);}
+.origem::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.22;
+  background-image:radial-gradient(circle,rgba(255,255,255,.5) .6px,transparent 1px);background-size:4px 4px;mix-blend-mode:overlay;}
+@keyframes origemzoom{to{transform:scale(1.16) translateX(-2%);}}
+.origem-in{position:relative;width:100%;}
+.origem .rotulo{color:rgba(242,240,234,.7);} .origem .rotulo b{color:#FF7A00;}
+.origem-h{margin:18px 0 0;font-weight:800;letter-spacing:-.045em;line-height:.95;font-size:clamp(40px,6vw,92px);max-width:16ch;}
+.origem-h span{display:block;}
+.origem-h span:nth-child(1),.origem-h span:nth-child(2){color:rgba(242,240,234,.55);}
+.origem-h .vez{color:#fff;margin-top:.12em;}
+.origem-h .vez br{display:none;}
+.origem-h .vez{background:linear-gradient(92deg,#FF7A00 0%,#FF1A1A 55%,#9333FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.origem .lead{max-width:46ch;margin-top:26px;color:rgba(242,240,234,.88);font-size:clamp(16px,1.35vw,19px);}
+.origem-cta{display:flex;flex-wrap:wrap;align-items:center;gap:28px;margin-top:36px;}
+.origem-cta .rota{margin-top:0;}
+.origem .btn-gold{background:#FF7A00;border-color:#FF7A00;color:#07080D;box-shadow:0 12px 40px -10px rgba(255,122,0,.65);}
+.origem .btn-gold:hover{background:#fff;border-color:#fff;}
+/* entrada: as linhas sobem uma a uma quando o bloco aparece */
+.origem-h.reveal span{opacity:0;transform:translateY(.4em);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);}
+.origem-h.reveal.in span{opacity:1;transform:none;}
+.origem-h.reveal.in span:nth-child(2){transition-delay:.15s;} .origem-h.reveal.in span:nth-child(3){transition-delay:.4s;}
+@media(max-width:640px){
+  .origem{min-height:0;padding:96px 0 84px;}
+  .origem::before{background:linear-gradient(0deg,rgba(5,6,10,.97) 0%,rgba(5,6,10,.78) 55%,rgba(5,6,10,.55) 100%),linear-gradient(0deg,#07080D 0%,transparent 20%,transparent 85%,#07080D 100%);}
+  .origem-h .vez br{display:inline;}
+  .origem-cta{gap:20px;} .origem-cta .btn{width:100%;justify-content:center;}
+}
+@media(prefers-reduced-motion:reduce){ .origem-bg{animation:none;} .origem-h.reveal span{opacity:1;transform:none;transition:none;} }
+.origem-h .vez br{display:inline;}
+.origem-h span:nth-child(1),.origem-h span:nth-child(2){color:rgba(242,240,234,.66);}
+.origem-cta .rota i{flex:0 0 120px;}
+@media(max-width:640px){ .origem .rotulo b{display:block;margin-top:4px;} .origem-cta .rota i{flex:1 1 60px;} .origem-cta .rota{width:100%;} }
+@media(max-width:640px){ .origem .rotulo{display:block;} }
