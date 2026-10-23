@@ -16,8 +16,10 @@
     INAUGURACAO_PREVISTA: "novembro",
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
-    /* Instagram (sem @). espaco: página inicial e esquenta. club: Club Alpha. idealizador: quem criou o projeto. */
-    INSTAGRAM: { espaco: "alphahousesp", club: "alphahousesp", idealizador: "consultorcannabicobrasil" },
+    /* Instagram (sem @). espaco: página inicial e esquenta. club: Club Alpha. idealizador: quem criou o projeto.
+       canal: canal de transmissão da montagem (o que vem depois de instagram.com/). */
+    INSTAGRAM: { espaco: "alphahousesp", club: "alphahousesp", idealizador: "consultorcannabicobrasil",
+                 canal: "channel/qMWsnLP563LCSqzs" },
 
     /* Pixel da Meta (só o número). Vazio = desligado. Com o número, mede visitas,
        cliques em pagar, contatos no WhatsApp e compras aprovadas. */
