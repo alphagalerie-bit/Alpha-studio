@@ -489,3 +489,7 @@ body{background:var(--parede);color:var(--tinta);}
 .verbos .v2{color:#FF1A1A;}
 .verbos .v3{color:#0A84FF;}
 .v4 i{color:#FF7A00;animation:none;text-shadow:none;}
+/* painel de LED: vídeo real do painel no lugar da animação */
+.led-tela{width:340px;border:8px solid #111216;border-radius:2px;background-image:none;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 24px 60px -20px rgba(0,0,0,.8),0 0 70px -10px rgba(147,51,255,.35);}
+.led-tela video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+@media(max-width:640px){ .led-tela{width:100%;max-width:100%;} }
