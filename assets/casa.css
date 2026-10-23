@@ -494,3 +494,19 @@ body{background:var(--parede);color:var(--tinta);}
 .led-tela video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 @media(max-width:640px){ .led-tela{width:100%;max-width:100%;} }
 .moldura video{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* de Alphaville para São Paulo: prova de que o lugar existiu, logo antes dos planos */
+.origem{position:relative;overflow:hidden;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);
+  background:radial-gradient(ellipse 50% 80% at 85% 50%,rgba(147,51,255,.18),transparent 70%),var(--parede);}
+.origem .titulo em{font-style:normal;color:#FF7A00;}
+.origem .lead{max-width:52ch;margin-top:18px;color:rgba(242,240,234,.82);}
+.rota{display:flex;align-items:center;gap:16px;margin-top:34px;font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--cinza);}
+.rota i{flex:0 1 220px;height:2px;background:linear-gradient(90deg,rgba(242,240,234,.25),#FF7A00);position:relative;overflow:hidden;}
+.rota i::after{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;background:linear-gradient(90deg,transparent,#fff,transparent);animation:rota 2.6s ease-in-out infinite;}
+.rota .agora{color:var(--tinta);font-weight:600;}
+@keyframes rota{to{left:100%;}}
+@media(max-width:640px){ .rota{font-size:11px;gap:10px;} }
+@media(prefers-reduced-motion:reduce){ .rota i::after{animation:none;} }
+.origem .titulo{max-width:24ch;}
+.rota span{white-space:nowrap;}
+@media(max-width:640px){ .rota i{flex:1 1 40px;} }
