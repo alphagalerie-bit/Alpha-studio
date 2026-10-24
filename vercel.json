@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    {
+      "source": "/:pagina(club|esquenta|comunidade)",
+      "has": [{ "type": "host", "value": "alphastudio.alphagalerie.com" }],
+      "destination": "https://alphahousesp.alphagalerie.com/:pagina/",
+      "permanent": false
+    },
+    {
+      "source": "/:pagina(club|esquenta|comunidade)/:resto*",
+      "has": [{ "type": "host", "value": "alphastudio.alphagalerie.com" }],
+      "destination": "https://alphahousesp.alphagalerie.com/:pagina/:resto*",
+      "permanent": false
+    },
+    {
+      "source": "/:caminho*",
+      "has": [{ "type": "host", "value": "alphastudio.alphagalerie.com" }],
+      "destination": "https://djcreator.alphagalerie.com/",
+      "permanent": false
+    }
+  ]
+}
