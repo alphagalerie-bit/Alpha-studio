@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://alphastudio.alphagalerie.com/sitemap.xml
+Sitemap: https://alphahousesp.alphagalerie.com/sitemap.xml

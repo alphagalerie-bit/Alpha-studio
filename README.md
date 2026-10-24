@@ -1,6 +1,6 @@
 # Alpha House · Perdizes, SP
 
-Site da Alpha House: https://alphastudio.alphagalerie.com
+Site da Alpha House: https://alphahousesp.alphagalerie.com
 
 | Página | O que vende |
 | --- | --- |
@@ -34,7 +34,7 @@ Site da Alpha House: https://alphastudio.alphagalerie.com
 Variáveis de ambiente na Vercel:
 
 - `MP_ACCESS_TOKEN`: Access Token de produção do Mercado Pago (obrigatória para cobrar e para a barra da meta).
-- `SITE_URL` (opcional): endereço do site para a volta do pagamento, por exemplo `https://alphastudio.alphagalerie.com`.
+- `SITE_URL` (opcional): endereço do site para a volta do pagamento, por exemplo `https://alphahousesp.alphagalerie.com`.
 
 Sem `MP_ACCESS_TOKEN`, o botão de pagar leva o cliente para o WhatsApp.
 
