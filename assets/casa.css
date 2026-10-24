@@ -628,3 +628,20 @@ body{background:var(--parede);color:var(--tinta);}
 
 /* revisão de lançamento */
 @media(max-width:640px){ .rotulo{flex-wrap:wrap;gap:4px 12px;} }
+
+/* lá dentro: mais experiências além dos quatro verbos */
+.mais-tit{margin-top:64px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--cinza);}
+.mais-grade{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px;}
+.mais{position:relative;overflow:hidden;border:1px solid var(--linha);border-radius:16px;padding:24px 22px 26px;background:var(--papel);
+  display:flex;flex-direction:column;gap:8px;transition:transform .25s ease,border-color .25s ease;}
+.mais::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--c);}
+.mais::after{content:"";position:absolute;right:-50px;top:-50px;width:140px;height:140px;border-radius:50%;background:var(--c);opacity:.10;filter:blur(26px);}
+.mais:hover{transform:translateY(-3px);border-color:var(--c);}
+.mais b{font-size:clamp(21px,1.9vw,26px);font-weight:800;letter-spacing:-.03em;color:var(--c);}
+.mais span{color:rgba(242,240,234,.78);font-size:15px;line-height:1.45;}
+.mais.vio{--c:var(--vio);} .mais.rubi{--c:var(--rubi);} .mais.ciano{--c:var(--ciano);} .mais.ouro{--c:var(--ouro-2);}
+.mais-fecha{margin-top:34px;}
+@media(max-width:960px){ .mais-grade{grid-template-columns:1fr 1fr;} }
+@media(max-width:420px){ .mais{padding:20px 16px 22px;} .mais span{font-size:14px;} }
+@media(max-width:480px){ .mais b{font-size:18px;letter-spacing:-.02em;overflow-wrap:anywhere;} .mais-grade{gap:10px;} }
+@media(max-width:480px){ .mais{padding:18px 14px 20px;} .mais b{font-size:16.5px;overflow-wrap:normal;} }
