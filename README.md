@@ -17,6 +17,7 @@ Site da Alpha House: https://alphahousesp.alphagalerie.com
 - **`img/marcas/`**: logos das marcas parceiras (PNG branco, fundo transparente).
 - **`video/`**: vídeos do site (MP4 sem som, a não ser o do topo).
 - **`assets/logo/`**: logo da Alpha House em SVG e PNG.
+- **`vercel.json`**: o endereço antigo `alphastudio.alphagalerie.com` leva para o estúdio de DJs (`djcreator.alphagalerie.com`); links antigos de `/club/`, `/esquenta/` e `/comunidade/` vão para a Alpha House.
 
 ## Visual
 
