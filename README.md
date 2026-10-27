@@ -39,6 +39,6 @@ Variáveis de ambiente na Vercel:
 
 Sem `MP_ACCESS_TOKEN`, o botão de pagar leva o cliente para o WhatsApp.
 
-## Depois de 20 de novembro
+## Depois de 15 de dezembro
 
 A contagem regressiva some sozinha quando a pré-venda termina (`PRE_VENDA_FIM`), mas os preços não mudam sozinhos: atualize `pix`, `cartao` e `mensal` de cada oferta no `config.js`.
