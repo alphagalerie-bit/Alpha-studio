@@ -11,8 +11,8 @@
     /* Fim da pré-venda de fundadores (ano-mês-dia, hora e fuso). Liga a contagem regressiva
        da faixa do topo e dos relógios grandes; depois dessa hora, os dois somem sozinhos.
        Vazio = sem contagem. PRE_VENDA_ATE e INAUGURACAO_PREVISTA são os textos do site. */
-    PRE_VENDA_FIM: "2026-11-20T23:59:00-03:00",
-    PRE_VENDA_ATE: "20 de novembro",
+    PRE_VENDA_FIM: "2026-12-15T23:59:00-03:00",
+    PRE_VENDA_ATE: "15 de dezembro",
     INAUGURACAO_PREVISTA: "novembro",
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
@@ -30,7 +30,7 @@
        A contagem lê as vendas aprovadas do site no Mercado Pago (api/meta.js).
        Vendeu fora do site (Pix pelo WhatsApp)? Some em extraValor (R$) e em extraVagas
        (ex.: { membro: 2 }) para a barra e as vagas restantes ficarem certas. */
-    META: { alvo: 22800, desde: "2026-10-01", extraValor: 0, extraVagas: {}, mostrarFundadoresDe: 3 },
+    META: { alvo: 25500, desde: "2026-10-01", extraValor: 0, extraVagas: {}, mostrarFundadoresDe: 3 },
 
     /* Datas de show (página /esquenta).
        data: dia do show (ano-mês-dia). A data sai do site sozinha na véspera do show.
