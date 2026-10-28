@@ -658,3 +658,16 @@ body{background:var(--parede);color:var(--tinta);}
 .prog-item.vio{--c:var(--vio);} .prog-item.rubi{--c:var(--rubi);} .prog-item.ciano{--c:var(--ciano);} .prog-item.ouro{--c:var(--ouro-2);}
 @media(max-width:760px){ .prog-item{grid-template-columns:1fr;padding-left:20px;} .prog-item::before{top:33px;} .prog-item em{justify-self:start;} }
 @media(min-width:761px){ .prog-item{grid-template-columns:34% minmax(0,1fr) 150px;} .prog-item em{justify-self:end;} }
+
+/* link "o que a sua marca ganha" nos cards de marca */
+.pac-mais{display:block;text-align:center;margin-top:12px;font-size:14px;color:var(--ciano);text-decoration:none;}
+.pac-mais:hover{text-decoration:underline;}
+
+/* página para marcas */
+.marcas-h{font-size:clamp(40px,5.6vw,84px);font-weight:800;letter-spacing:-.045em;line-height:.95;margin:0;max-width:14ch;}
+.marcas-h em{font-style:normal;background:linear-gradient(100deg,var(--ouro),var(--ouro-2) 40%,var(--rubi));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.marcas-foto{margin:0;border-radius:18px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 30px 80px -20px rgba(0,0,0,.85),0 0 100px -10px rgba(255,140,40,.35);}
+.marcas-foto img{width:100%;height:100%;object-fit:cover;display:block;}
+.pac-grid.pac-dois{grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px;}
+.pac-grid.pac-dois .pac:nth-child(2){order:0;}
+@media(max-width:760px){ .pac-grid.pac-dois{grid-template-columns:1fr;} }

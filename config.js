@@ -73,16 +73,17 @@
         barra: "Membro fundador · R$ 250/mês", botao: "Quero fazer parte"
       },
       {
-        id: "marca", nome: "Marca apoiadora", pagina: "/comunidade/",
-        uso: "Sua marca perto de quem cria, presente nos encontros e na Live Alpha",
-        pix: 2970, cartao: 3129, unidade: "/ trimestre", sinal: 1, vagas: 10,
+        id: "marca", nome: "Marca Parceira", pagina: "/marcas/",
+        uso: "Sua marca no painel de LED, na Galeria Alpha, nos encontros e na Live Alpha",
+        pix: 2970, cartao: 3129, unidade: "/ trimestre", sinal: 1,   /* marcas: sem limite de vagas */
         mensal: 990, assinatura: { meses: 3 },
+        barra: "Marca Parceira · R$ 990/mês", botao: "Quero ser parceira",
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       },
       {
-        id: "master", nome: "Apoiador master", pagina: "/comunidade/",
-        uso: "A marca que apresenta a Live Alpha, com exclusividade na sua categoria",
-        pix: 8700, cartao: 9164, unidade: "/ trimestre", sinal: 1, vagas: 2,
+        id: "master", nome: "Marca Âncora", pagina: "/marcas/",
+        uso: "A marca que assina a Live Alpha, com o maior destaque e exclusividade na sua categoria",
+        pix: 8700, cartao: 9164, unidade: "/ trimestre", sinal: 1,
         mensal: 2900, assinatura: { meses: 3 },
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       }

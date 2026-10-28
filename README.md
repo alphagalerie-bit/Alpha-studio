@@ -4,8 +4,9 @@ Site da Alpha House: https://alphahousesp.alphagalerie.com
 
 | Página | O que vende |
 | --- | --- |
-| `/` | Comunidade Alpha: membro fundador, Sócio do Club, marca apoiadora e apoiador master (pré-venda de fundadores) |
+| `/` | Comunidade Alpha: membro fundador, Sócio do Club, Marca Parceira e Marca Âncora (pré-venda de fundadores) |
 | `/comunidade/` | A mesma página da home, para os links já divulgados |
+| `/marcas/` | Página para marcas: Marca Parceira (R$ 990/mês) e Marca Âncora (R$ 2.900/mês), sem limite de vagas |
 | `/club/` | Club Alpha, plano trimestral |
 | `/esquenta/` | Lugar privativo no dia de show (até 12 pessoas) |
 
