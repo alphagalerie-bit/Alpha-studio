@@ -72,19 +72,36 @@
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama no WhatsApp para a gente te receber.",
         barra: "Membro fundador · R$ 250/mês", botao: "Quero fazer parte"
       },
+      /* Cotas para marcas (página /marcas/). vagas = quantas cotas existem de cada uma.
+         Tudo do mesmo jeito dos outros planos: mensal, cobrado por trimestre. */
       {
-        id: "marca", nome: "Marca Parceira", pagina: "/marcas/",
-        uso: "Sua marca no painel de LED, na Galeria Alpha, nos encontros e na Live Alpha",
-        pix: 2970, cartao: 3129, unidade: "/ trimestre", sinal: 1,   /* marcas: sem limite de vagas */
-        mensal: 990, assinatura: { meses: 3 },
-        barra: "Marca Parceira · R$ 990/mês", botao: "Quero ser parceira",
+        id: "bronze", nome: "Cota Bronze", pagina: "/marcas/", cota: true,
+        uso: "Sua marca no painel de LED de propaganda, no site e nas redes da Alpha House",
+        pix: 1170, cartao: 1233, unidade: "/ trimestre", sinal: 1, vagas: 8,
+        mensal: 390, assinatura: { meses: 3 },
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       },
       {
-        id: "master", nome: "Marca Âncora", pagina: "/marcas/",
-        uso: "A marca que assina a Live Alpha, com o maior destaque e exclusividade na sua categoria",
-        pix: 8700, cartao: 9164, unidade: "/ trimestre", sinal: 1,
+        id: "marca", nome: "Cota Prata", pagina: "/marcas/", cota: true,
+        uso: "Sua marca no painel de LED, no cenário, na Galeria Alpha e nas lives",
+        pix: 2970, cartao: 3129, unidade: "/ trimestre", sinal: 1, vagas: 4,
+        mensal: 990, assinatura: { meses: 3 },
+        /* barra fixa do celular na /marcas/ (leva para as cotas) */
+        barra: "Cotas para marcas a partir de R$ 390/mês", botao: "Ver as cotas",
+        apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
+      },
+      {
+        id: "master", nome: "Cota Ouro", pagina: "/marcas/", cota: true,
+        uso: "Painel de LED grande com VT, entrevista na Live Alpha e exclusividade na sua categoria",
+        pix: 8700, cartao: 9164, unidade: "/ trimestre", sinal: 1, vagas: 2,
         mensal: 2900, assinatura: { meses: 3 },
+        apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
+      },
+      {
+        id: "diamante", nome: "Cota Diamante", pagina: "/marcas/", cota: true,
+        uso: "A marca que apresenta a Alpha House: o maior destaque em tudo o que acontece lá dentro",
+        pix: 14700, cartao: 15486, unidade: "/ trimestre", sinal: 1, vagas: 1,
+        mensal: 4900, assinatura: { meses: 3 },
         apos: "Obrigado por acreditar com a gente! Você já está ajudando a Alpha House a abrir as portas. Chama a gente no WhatsApp para alinhar a presença da sua marca."
       }
     ],
