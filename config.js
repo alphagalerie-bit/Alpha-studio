@@ -13,7 +13,9 @@
        Vazio = sem contagem. PRE_VENDA_ATE e INAUGURACAO_PREVISTA são os textos do site. */
     PRE_VENDA_FIM: "2026-12-15T23:59:00-03:00",
     PRE_VENDA_ATE: "15 de dezembro",
-    INAUGURACAO_PREVISTA: "novembro",
+    INAUGURACAO_PREVISTA: "20 de novembro",
+    /* Dia da inauguração: a faixa do topo e o relógio contam até aqui. Depois dela, contam até o fim da pré-venda. */
+    INAUGURACAO: "2026-11-20T00:00:00-03:00",
     ESTADIO: "Allianz Parque",      /* troque aqui quando virar Nubank Parque */
 
     /* Instagram (sem @). espaco: página inicial e esquenta. club: Club Alpha. idealizador: quem criou o projeto.
@@ -30,6 +32,24 @@
        A contagem lê as vendas aprovadas do site no Mercado Pago (api/meta.js).
        Vendeu fora do site (Pix pelo WhatsApp)? Some em extraValor (R$) e em extraVagas
        (ex.: { membro: 2 }) para a barra e as vagas restantes ficarem certas. */
+    /* Balão de conversa que aparece depois de alguns segundos na página e leva para o WhatsApp.
+       Cada página escolhe o seu pelo atributo data-chat do <body>. espera: segundos até aparecer. */
+    CHAT: {
+      espera: 20,
+      home: {
+        ola: "Fala, tudo bem? 👋",
+        texto: "Ficou com alguma dúvida sobre o projeto? Qual plano fica melhor para a sua realidade hoje?",
+        opcoes: ["Sócio do Club", "Membro fundador", "Cotas para marcas", "Tenho uma dúvida"],
+        cta: "Bora fazer isso acontecer juntos?"
+      },
+      marcas: {
+        ola: "Fala, tudo bem? 👋",
+        texto: "O que mais te interessou para a sua marca?",
+        opcoes: ["Cota Bronze", "Cota Prata", "Cota Ouro", "Cota Diamante", "Tenho uma dúvida"],
+        cta: "Bora mostrar a sua marca para o mundo?"
+      }
+    },
+
     META: { alvo: 25500, desde: "2026-10-01", extraValor: 0, extraVagas: {}, mostrarFundadoresDe: 3 },
 
     /* Datas de show (página /esquenta).
