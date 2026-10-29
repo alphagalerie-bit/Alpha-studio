@@ -36,7 +36,10 @@
       var o = acha(el.getAttribute("data-vagas-de"));
       if (!o || !o.vagas) { el.remove(); return; }
       var resta = Math.max(0, o.vagas - ((vendidas && vendidas[o.id]) || 0));
-      el.textContent = resta === 0 ? "Vagas esgotadas"
+      if (o.cota) el.textContent = resta === 0 ? (o.vagas === 1 ? "Cota vendida" : "Cotas esgotadas")
+        : resta === o.vagas ? (o.vagas === 1 ? "Cota única" : o.vagas + " cotas")
+        : (resta === 1 ? "Resta 1 cota" : "Restam " + resta + " cotas") + " de " + o.vagas;
+      else el.textContent = resta === 0 ? "Vagas esgotadas"
         : resta === o.vagas ? o.vagas + " vagas de fundador"
         : (resta === 1 ? "Resta 1 vaga" : "Restam " + resta + " vagas") + " de " + o.vagas;
       var card = el.closest(".pac"), btn = card && card.querySelector("[data-reserve]");
@@ -434,7 +437,8 @@
 
   /* ====== BARRA FIXA NO CELULAR: preço + botão, depois que o topo da página sai da tela ====== */
   var heroEl = document.querySelector(".hero");
-  if (OFERTA && OFERTA.barra && modal && heroEl && "IntersectionObserver" in window) {
+  var ctaLink = document.body.getAttribute("data-cta-link");
+  if (OFERTA && OFERTA.barra && modal && heroEl && !ctaLink && "IntersectionObserver" in window) {
     var cta = document.createElement("div");
     cta.className = "cta-bar";
     cta.innerHTML = '<span class="cta-txt"></span><button type="button" class="btn btn-gold" data-reserve>' + (OFERTA.botao || "Reservar") + '</button>';
@@ -447,13 +451,12 @@
     }).observe(heroEl);
   }
 
-  /* Página sem modal (home): a barra fixa leva para os planos */
-  var ctaLink = document.body.getAttribute("data-cta-link");
-  if (!OFERTA && ctaLink && heroEl && "IntersectionObserver" in window) {
+  /* Com data-cta-link no body, a barra fixa leva para os planos em vez de abrir o pagamento */
+  if (ctaLink && heroEl && "IntersectionObserver" in window) {
     var barra = document.createElement("div");
     barra.className = "cta-bar";
-    barra.innerHTML = '<span class="cta-txt">' + (document.body.getAttribute("data-cta-texto") || "") + '</span>' +
-      '<a class="btn btn-gold" href="' + ctaLink + '">' + (document.body.getAttribute("data-cta-botao") || "Ver planos") + '</a>';
+    barra.innerHTML = '<span class="cta-txt">' + (document.body.getAttribute("data-cta-texto") || (OFERTA && OFERTA.barra) || "") + '</span>' +
+      '<a class="btn btn-gold" href="' + ctaLink + '">' + (document.body.getAttribute("data-cta-botao") || (OFERTA && OFERTA.botao) || "Ver planos") + '</a>';
     document.body.appendChild(barra);
     document.body.classList.add("has-cta");
     new IntersectionObserver(function (es) {

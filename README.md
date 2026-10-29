@@ -4,9 +4,9 @@ Site da Alpha House: https://alphahousesp.alphagalerie.com
 
 | Página | O que vende |
 | --- | --- |
-| `/` | Comunidade Alpha: membro fundador, Sócio do Club, Marca Parceira e Marca Âncora (pré-venda de fundadores) |
+| `/` | Comunidade Alpha: membro fundador, Sócio do Club e chamada para as cotas de marca (pré-venda de fundadores) |
 | `/comunidade/` | A mesma página da home, para os links já divulgados |
-| `/marcas/` | Página para marcas: Marca Parceira (R$ 990/mês) e Marca Âncora (R$ 2.900/mês), sem limite de vagas |
+| `/marcas/` | Cotas para marcas: 8 Bronze (R$ 390/mês), 4 Prata (R$ 990), 2 Ouro (R$ 2.900) e 1 Diamante (R$ 4.900). As quantidades ficam em `vagas` no `config.js` |
 | `/club/` | Club Alpha, plano trimestral |
 | `/esquenta/` | Lugar privativo no dia de show (até 12 pessoas) |
 
