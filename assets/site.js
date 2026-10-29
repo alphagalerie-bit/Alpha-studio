@@ -79,26 +79,32 @@
     }).catch(function () {});
   }
 
-  /* Contagem para o fim da pré-venda: na faixa do topo (<span data-contagem>) e nos relógios
-     grandes (<div data-relogio>). Depois da hora marcada, a faixa e os relógios somem. */
+  /* Contagem: até a inauguração (CFG.INAUGURACAO) e, depois dela, até o fim da pré-venda.
+     Aparece na faixa do topo (<span data-contagem>) e nos relógios grandes (<div data-relogio>).
+     Depois do fim da pré-venda, a faixa e os relógios somem. */
+  var INAUG = CFG.INAUGURACAO ? new Date(CFG.INAUGURACAO) : null;
   var FIM = CFG.PRE_VENDA_FIM ? new Date(CFG.PRE_VENDA_FIM) : null;
-  if (FIM && !isNaN(FIM)) {
+  if ((INAUG && !isNaN(INAUG)) || (FIM && !isNaN(FIM))) {
     var relogios = document.querySelectorAll("[data-relogio]");
     var conta = function () {
-      var ms = FIM - new Date();
-      if (ms <= 0) {
+      var agora = new Date(), abre = INAUG && !isNaN(INAUG) && INAUG > agora;
+      var alvo = abre ? INAUG : FIM, ms = alvo ? alvo - agora : 0;
+      if (!(ms > 0)) {
         document.querySelectorAll("[data-prazo],[data-relogio]").forEach(function (el) { el.style.display = "none"; });
         return;
       }
       var d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60, s = Math.floor(ms / 1e3) % 60;
+      var tempo = d + 'd ' + pad(h) + 'h ' + pad(m) + 'min';
       document.querySelectorAll("[data-contagem]").forEach(function (el) {
-        el.innerHTML = ' · termina em <b>' + d + 'd ' + pad(h) + 'h ' + pad(m) + 'min</b>';
+        el.innerHTML = abre ? "Inauguração em " + CFG.INAUGURACAO_PREVISTA + " · faltam <b>" + tempo + "</b>"
+          : "Pré-venda de fundadores · termina em <b>" + tempo + "</b>";
       });
       relogios.forEach(function (el) {
-        el.innerHTML = '<p class="relogio-tit">A pré-venda de fundadores termina em</p><div class="relogio-num">' +
+        el.innerHTML = '<p class="relogio-tit">' + (abre ? "Faltam para a inauguração" : "A pré-venda de fundadores termina em") + '</p><div class="relogio-num">' +
           [[d, d === 1 ? "dia" : "dias"], [pad(h), "horas"], [pad(m), "min"], [pad(s), "seg"]].map(function (x) {
             return '<span><b>' + x[0] + '</b>' + x[1] + '</span>';
-          }).join("") + '</div><p class="relogio-sub">Até ' + (CFG.PRE_VENDA_ATE || "o fim da pré-venda") +
+          }).join("") + '</div><p class="relogio-sub">' + (abre ? "Inauguração em " + CFG.INAUGURACAO_PREVISTA + ". Pré-venda de fundadores até " + (CFG.PRE_VENDA_ATE || "o fim da pré-venda")
+            : "Até " + (CFG.PRE_VENDA_ATE || "o fim da pré-venda")) +
           ' ou enquanto houver vagas. Depois da pré-venda, os preços sobem.</p>';
         el.hidden = false;
       });
@@ -147,6 +153,34 @@
     a.setAttribute("aria-label", "Falar no WhatsApp");
     a.innerHTML = '<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.7C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.4-3.8-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.3 5.3 4.6 2 .8 2.7.9 3.7.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.7-.5z"/></svg>';
     document.body.appendChild(a);
+  })();
+  /* Balão de conversa: depois de CFG.CHAT.espera segundos, pergunta o que a pessoa procura e
+     leva para o WhatsApp com a escolha na mensagem. Aparece uma vez por visita (<body data-chat="home">). */
+  (function () {
+    var C = CFG.CHAT, tipo = document.body.getAttribute("data-chat"), B = C && tipo && C[tipo];
+    if (!B) return;
+    try { if (sessionStorage.getItem("alphaChat")) return; } catch (e) {}
+    function abre() {
+      if (document.querySelector(".modal.show")) { setTimeout(abre, 5000); return; }  /* espera o pagamento fechar */
+      var box = document.createElement("div");
+      box.className = "chat"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "Conversa com a Alpha House");
+      box.innerHTML = '<button type="button" class="chat-x" aria-label="Fechar">×</button>' +
+        '<p class="chat-quem"><span class="chat-on"></span>Alpha House · fale no WhatsApp</p>' +
+        '<div class="chat-msg chat-digita"><i></i><i></i><i></i></div>';
+      document.body.appendChild(box);
+      requestAnimationFrame(function () { box.classList.add("on"); });
+      try { sessionStorage.setItem("alphaChat", "1"); } catch (e) {}
+      setTimeout(function () {
+        box.querySelector(".chat-digita").remove();
+        box.insertAdjacentHTML("beforeend", '<div class="chat-msg"><b>' + B.ola + '</b> ' + B.texto + '</div>' +
+          '<div class="chat-ops">' + B.opcoes.map(function (o) { return '<a href="' + linkWpp(
+            /dúvida/i.test(o) ? "Olá! Vim pelo site da " + CFG.NOME + " e tenho uma dúvida sobre o projeto."
+              : "Olá! Vim pelo site da " + CFG.NOME + " e tenho interesse em: " + o + ".") + '" target="_blank" rel="noopener">' + o + '</a>'; }).join("") + '</div>' +
+          '<p class="chat-cta">' + B.cta + '</p>');
+      }, 1400);
+      box.querySelector(".chat-x").addEventListener("click", function () { box.classList.remove("on"); setTimeout(function () { box.remove(); }, 300); });
+    }
+    setTimeout(abre, (C.espera || 20) * 1000);
   })();
   document.addEventListener("click", function (e) {
     var a = e.target.closest('a[href^="https://wa.me/"]');
